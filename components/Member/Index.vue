@@ -85,7 +85,7 @@
                 <div class="px-2 py-2 whitespace-no-wrap">
                   <div class="leading-5 font-bold text-white font-medium">{{listLink.link}}</div>
                     <div class="leading-5 font-bold text-gray-900">
-                      https://linkup.sn/hazkial
+                      https://linkup.sn/{{listLink.link}}
                     </div>
                   <div class="leading-5 flex font-medium"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white font-medium" fill="currentColor" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="trending-up"><rect width="24" height="24" transform="rotate(-90 12 12)" opacity="0"/><path d="M21 7a.78.78 0 0 0 0-.21.64.64 0 0 0-.05-.17 1.1 1.1 0 0 0-.09-.14.75.75 0 0 0-.14-.17l-.12-.07a.69.69 0 0 0-.19-.1h-.2A.7.7 0 0 0 20 6h-5a1 1 0 0 0 0 2h2.83l-4 4.71-4.32-2.57a1 1 0 0 0-1.28.22l-5 6a1 1 0 0 0 .13 1.41A1 1 0 0 0 4 18a1 1 0 0 0 .77-.36l4.45-5.34 4.27 2.56a1 1 0 0 0 1.27-.21L19 9.7V12a1 1 0 0 0 2 0V7z"/></g></g></svg> {{listLink.hit}}</div>
                 </div>
