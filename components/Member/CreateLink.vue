@@ -8,10 +8,10 @@
             <span class="font-bold text-gray-400 items-center">https://linkup.sn</span>
           </div>
           <div class="w-7/12 bg-white rounded-r text-center items-center">
-            <input type="text" v-model="link" class="w-full px-2 my-auto items-center text-gray-800 font-medium rounded outline-none focus:outline-none">
+            <input type="text" v-model="link" readonly class="w-full px-2 my-auto items-center text-gray-800 font-medium rounded outline-none focus:outline-none">
           </div>
         </div>
-        <span class="mx-2 text-gray-300 font-medium text-sm">Leave empty for a random generated one</span>
+        <!-- <span class="mx-2 text-gray-300 font-medium text-sm">Leave empty for a random generated one</span> -->
       </div>
       <input ref="imageHeader" type="file" class="hidden" accept="image/png, image/jpeg, image/jpg, image/gif, image/jpeg" id="imgSource" @change.prevent="ImageHeader($event.target.files)">
       <div class="flex items-center justify-center pt-6 mb-2">
@@ -85,10 +85,26 @@
               <svg v-if="colorBg =='bg-gradient-to-b from-blue-400 to-blue-500'" xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white text-center mx-auto" fill="currentColor" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="checkmark"><rect width="24" height="24" opacity="0"/><path d="M9.86 18a1 1 0 0 1-.73-.32l-4.86-5.17a1 1 0 1 1 1.46-1.37l4.12 4.39 8.41-9.2a1 1 0 1 1 1.48 1.34l-9.14 10a1 1 0 0 1-.73.33z"/></g></g></svg>
             </div>
             <div @click="setBg('img','image')" class="flex h-24 w-24 flex items-center rounded-lg border-gray-400 border-4 items-center">
-              <img v-if="imgBg" id="bgPhoto" class="h-full w-full object-cover object-top rounded-md" alt="image preview"/>
+              <img v-if="imgBg" id="bgPhoto" :src="imgBg" class="h-full w-full object-cover object-top rounded-md" alt="image preview"/>
+              <!-- <img v-if="imgBg && dataLink.background_type==''" id="bgPhoto" class="h-full w-full object-cover object-top rounded-md" alt="image preview"/>
+              <img v-if="imgBg!='' && dataLink.background_type!=''" :src="imgBg" class="h-full w-full object-cover object-top rounded-md" alt="image preview"/> -->
               <svg v-if="!imgBg" xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400 mx-auto py-auto items-center text-center" fill="currentColor" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="image"><rect width="24" height="24" opacity="0"/><path d="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zM6 5h12a1 1 0 0 1 1 1v8.36l-3.2-2.73a2.77 2.77 0 0 0-3.52 0L5 17.7V6a1 1 0 0 1 1-1zm12 14H6.56l7-5.84a.78.78 0 0 1 .93 0L19 17v1a1 1 0 0 1-1 1z"/><circle cx="8" cy="8.5" r="1.5"/></g></g></svg>
             </div>
           </div>
+        </div>
+        <div class="space-y-2">
+          <button v-for="databtn of viewDataButton" :key="databtn.id" class="w-full h-12 flex px-2 my-1 rounded-full justify-start items-center text-center text-lg font-medium" v-bind:class="databtn.btn_color">
+            <div class="w-1/12 justify-start items-center mr-1">
+              <div v-html="databtn.icon_btn"></div>
+            </div>
+            <div class="w-9/12 justify-start items-center">
+              <span class="text-white mx-auto">{{databtn.text_btn}}</span>
+            </div>
+            <div class="w-2/12 flex justify-start items-center text-white space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-white h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="trash-2"><rect width="24" height="24" opacity="0"/><path d="M21 6h-5V4.33A2.42 2.42 0 0 0 13.5 2h-3A2.42 2.42 0 0 0 8 4.33V6H3a1 1 0 0 0 0 2h1v11a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8h1a1 1 0 0 0 0-2zM10 4.33c0-.16.21-.33.5-.33h3c.29 0 .5.17.5.33V6h-4zM18 19a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V8h12z"/><path d="M9 17a1 1 0 0 0 1-1v-4a1 1 0 0 0-2 0v4a1 1 0 0 0 1 1z"/><path d="M15 17a1 1 0 0 0 1-1v-4a1 1 0 0 0-2 0v4a1 1 0 0 0 1 1z"/></g></g></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="text-white h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="edit-2"><rect width="24" height="24" opacity="0"/><path d="M19 20H5a1 1 0 0 0 0 2h14a1 1 0 0 0 0-2z"/><path d="M5 18h.09l4.17-.38a2 2 0 0 0 1.21-.57l9-9a1.92 1.92 0 0 0-.07-2.71L16.66 2.6A2 2 0 0 0 14 2.53l-9 9a2 2 0 0 0-.57 1.21L4 16.91a1 1 0 0 0 .29.8A1 1 0 0 0 5 18zM15.27 4L18 6.73l-2 1.95L13.32 6zm-8.9 8.91L12 7.32l2.7 2.7-5.6 5.6-3 .28z"/></g></g></svg>
+            </div>
+          </button>
         </div>
         <div class="w-full h-12 flex bg-green-400 rounded" @click="addLink()">
           <div class="w-2/12 flex h-full bg-blue-400 rounded items-center">
@@ -99,8 +115,8 @@
           </div>
           <div class="w-8/12 flex h-full rounded items-center">
             <div class="row mx-2 -space-y-2">
-              <h2 class="text-md font-medium -mb-2 text-gray-800">Add Link</h2>
-              <span class="text-xs font-md text-gray-600">Click for add new link</span>
+              <h2 class="text-md font-semibold -mb-2 text-gray-800">Add Link</h2>
+              <span class="text-xs font-lg text-gray-600">Click for add new link</span>
             </div>
           </div>
         </div>
@@ -122,49 +138,95 @@
             </div>
           </div>
           <div class="w-full flex h-12 px-2 my-4 space-x-2 justify-center items-center text-center">
-            <div class="w-2/12 h-full flex items-center bg-green-600 rounded-lg border-4 border-dotted border-white">
+            <div @click="typeLink('wa')" class="w-2/12 h-full flex items-center bg-green-600 rounded-lg" v-bind:class="{ 'border-4 border-dotted border-white': typeBTN=='wa' }">
               <!-- WA -->
               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mx-auto" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.03-1.355L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626a9.448 9.448 0 0 0 3.84 2.046l.569.087c.185.01.37-.004.556-.013a1.99 1.99 0 0 0 .833-.231c.166-.088.244-.132.383-.22 0 0 .043-.028.125-.09.135-.1.218-.171.33-.288.083-.086.155-.187.21-.302.078-.163.156-.474.188-.733.024-.198.017-.306.014-.373-.004-.107-.093-.218-.19-.265l-.582-.261s-.87-.379-1.401-.621a.498.498 0 0 0-.177-.041.482.482 0 0 0-.378.127v-.002c-.005 0-.072.057-.795.933a.35.35 0 0 1-.368.13 1.416 1.416 0 0 1-.191-.066c-.124-.052-.167-.072-.252-.109l-.005-.002a6.01 6.01 0 0 1-1.57-1c-.126-.11-.243-.23-.363-.346a6.296 6.296 0 0 1-1.02-1.268l-.059-.095a.923.923 0 0 1-.102-.205c-.038-.147.061-.265.061-.265s.243-.266.356-.41a4.38 4.38 0 0 0 .263-.373c.118-.19.155-.385.093-.536-.28-.684-.57-1.365-.868-2.041-.059-.134-.234-.23-.393-.249-.054-.006-.108-.012-.162-.016a3.385 3.385 0 0 0-.403.004z"/></svg>
             </div>
-            <div class="w-2/12 h-full flex items-center bg-blue-600 rounded-lg">
+            <div @click="typeLink('fb')" class="w-2/12 h-full flex items-center bg-blue-600 rounded-lg" v-bind:class="{ 'border-4 border-dotted border-white': typeBTN=='fb' }">
               <!-- FB -->
               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mx-auto" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z"/></svg>
             </div>
-            <div class="w-2/12 h-full flex items-center bg-blue-400 rounded-lg">
+            <div @click="typeLink('twitter')" class="w-2/12 h-full flex items-center bg-blue-400 rounded-lg" v-bind:class="{ 'border-4 border-dotted border-white': typeBTN=='twitter' }">
               <!-- Twitter -->
               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mx-auto" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M22.162 5.656a8.384 8.384 0 0 1-2.402.658A4.196 4.196 0 0 0 21.6 4c-.82.488-1.719.83-2.656 1.015a4.182 4.182 0 0 0-7.126 3.814 11.874 11.874 0 0 1-8.62-4.37 4.168 4.168 0 0 0-.566 2.103c0 1.45.738 2.731 1.86 3.481a4.168 4.168 0 0 1-1.894-.523v.052a4.185 4.185 0 0 0 3.355 4.101 4.21 4.21 0 0 1-1.89.072A4.185 4.185 0 0 0 7.97 16.65a8.394 8.394 0 0 1-6.191 1.732 11.83 11.83 0 0 0 6.41 1.88c7.693 0 11.9-6.373 11.9-11.9 0-.18-.005-.362-.013-.54a8.496 8.496 0 0 0 2.087-2.165z"/></svg>
             </div>
-            <div class="w-2/12 h-full flex items-center bg-red-600 rounded-lg">
+            <div @click="typeLink('yt')" class="w-2/12 h-full flex items-center bg-red-600 rounded-lg" v-bind:class="{ 'border-4 border-dotted border-white': typeBTN=='yt' }">
               <!-- YT -->
               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mx-auto" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/></svg>
             </div>
-            <div class="w-4/12 h-full flex items-center bg-gray-800 rounded-lg">
+            <div @click="typeLink('link')" class="w-4/12 h-full flex items-center bg-gray-800 rounded-lg" v-bind:class="{ 'border-4 border-dotted border-white': typeBTN=='link' }">
               <div class="flex mx-auto items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M13.06 8.11l1.415 1.415a7 7 0 0 1 0 9.9l-.354.353a7 7 0 0 1-9.9-9.9l1.415 1.415a5 5 0 1 0 7.071 7.071l.354-.354a5 5 0 0 0 0-7.07l-1.415-1.415 1.415-1.414zm6.718 6.011l-1.414-1.414a5 5 0 1 0-7.071-7.071l-.354.354a5 5 0 0 0 0 7.07l1.415 1.415-1.415 1.414-1.414-1.414a7 7 0 0 1 0-9.9l.354-.353a7 7 0 0 1 9.9 9.9z"/></svg>
                 <span class="text-center text-white mx-auto py-auto font-medium text-xs">Link</span>
               </div>
             </div>
           </div>
-          <div class="w-full px-2 pb-4 space-y-2">
+          <div v-if="!typeBTN" class="w-full px-2 pb-4 space-y-2 items-center">
+            <h4 class="text-red-400 font-medium text-lg text-center">select the button type above</h4>
+          </div>
+          <div v-if="typeBTN" class="w-full px-2 pb-4 space-y-2">
             <div class="w-full">
               <label>Your Link Full</label>
-              <input class="w-full h-8 items-center border-2 rounded border-gray-400 px-1" placeholder="your link">
+              <input v-model="dataButton.href" class="w-full h-8 items-center border-2 rounded border-gray-400 px-1" placeholder="your link">
             </div>
             <div class="w-full">
               <label>Your Text</label>
-              <input class="w-full h-8 items-center border-2 rounded border-gray-400 px-1" placeholder="your text" value="Click Visit My Facebook">
+              <input v-model="dataButton.text_btn" class="w-full h-8 items-center border-2 rounded border-gray-400 px-1" placeholder="your text">
             </div>
             <div class="w-full flex">
-              <button class="h-8 px-2 my-1 bg-green-300 rounded text-center font-medium">Choose Icon</button>
+              <!-- Next Pengembangan -->
+              <!-- <button class="h-8 px-2 my-1 bg-green-300 rounded text-center font-bold">Choose Icon</button> -->
             </div>
-            <div class="w-full space-y-2">
+            <div v-if="typeBTN" class="w-full space-y-2">
               <label>Preview Button Link</label>
-              <button class="w-full h-12 flex px-2 my-1 bg-blue-600 rounded-full justify-start items-center text-center text-lg font-medium">
+              <button v-if="typeBTN=='wa'" class="w-full h-12 flex px-2 my-1 bg-green-600 rounded-full justify-start items-center text-center text-lg font-medium">
+                <div class="w-1/12 justify-start items-center mr-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mx-auto" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.03-1.355L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626a9.448 9.448 0 0 0 3.84 2.046l.569.087c.185.01.37-.004.556-.013a1.99 1.99 0 0 0 .833-.231c.166-.088.244-.132.383-.22 0 0 .043-.028.125-.09.135-.1.218-.171.33-.288.083-.086.155-.187.21-.302.078-.163.156-.474.188-.733.024-.198.017-.306.014-.373-.004-.107-.093-.218-.19-.265l-.582-.261s-.87-.379-1.401-.621a.498.498 0 0 0-.177-.041.482.482 0 0 0-.378.127v-.002c-.005 0-.072.057-.795.933a.35.35 0 0 1-.368.13 1.416 1.416 0 0 1-.191-.066c-.124-.052-.167-.072-.252-.109l-.005-.002a6.01 6.01 0 0 1-1.57-1c-.126-.11-.243-.23-.363-.346a6.296 6.296 0 0 1-1.02-1.268l-.059-.095a.923.923 0 0 1-.102-.205c-.038-.147.061-.265.061-.265s.243-.266.356-.41a4.38 4.38 0 0 0 .263-.373c.118-.19.155-.385.093-.536-.28-.684-.57-1.365-.868-2.041-.059-.134-.234-.23-.393-.249-.054-.006-.108-.012-.162-.016a3.385 3.385 0 0 0-.403.004z"/></svg>
+                </div>
+                <div class="w-11/12 justify-start items-center">
+                  <span class="text-white mx-auto">{{dataButton.text_btn}}</span>
+                </div>
+              </button>
+              <button v-if="typeBTN=='fb'" class="w-full h-12 flex px-2 my-1 bg-blue-600 rounded-full justify-start items-center text-center text-lg font-medium">
                 <div class="w-1/12 justify-start items-center mr-1">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white pr-2" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z"/></svg>
                 </div>
                 <div class="w-11/12 justify-start items-center">
-                  <span class="text-white mx-auto">Visit My Facebook</span>
+                  <span class="text-white mx-auto">{{dataButton.text_btn}}</span>
+                </div>
+              </button>
+              <button v-if="typeBTN=='twitter'" class="w-full h-12 flex px-2 my-1 bg-blue-400 rounded-full justify-start items-center text-center text-lg font-medium">
+                <div class="w-1/12 justify-start items-center mr-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mx-auto" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M22.162 5.656a8.384 8.384 0 0 1-2.402.658A4.196 4.196 0 0 0 21.6 4c-.82.488-1.719.83-2.656 1.015a4.182 4.182 0 0 0-7.126 3.814 11.874 11.874 0 0 1-8.62-4.37 4.168 4.168 0 0 0-.566 2.103c0 1.45.738 2.731 1.86 3.481a4.168 4.168 0 0 1-1.894-.523v.052a4.185 4.185 0 0 0 3.355 4.101 4.21 4.21 0 0 1-1.89.072A4.185 4.185 0 0 0 7.97 16.65a8.394 8.394 0 0 1-6.191 1.732 11.83 11.83 0 0 0 6.41 1.88c7.693 0 11.9-6.373 11.9-11.9 0-.18-.005-.362-.013-.54a8.496 8.496 0 0 0 2.087-2.165z"/></svg>
+                </div>
+                <div class="w-11/12 justify-start items-center">
+                  <span class="text-white mx-auto">{{dataButton.text_btn}}</span>
+                </div>
+              </button>
+              <button v-if="typeBTN=='yt'" class="w-full h-12 flex px-2 my-1 bg-red-600 rounded-full justify-start items-center text-center text-lg font-medium">
+                <div class="w-1/12 justify-start items-center mr-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mx-auto" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/></svg>
+                </div>
+                <div class="w-11/12 justify-start items-center">
+                  <span class="text-white mx-auto">{{dataButton.text_btn}}</span>
+                </div>
+              </button>
+              <button v-if="typeBTN=='link'" class="w-full h-12 flex px-2 my-1 bg-gray-800 rounded-full justify-start items-center text-center text-lg font-medium">
+                <div class="w-1/12 justify-start items-center mr-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M13.06 8.11l1.415 1.415a7 7 0 0 1 0 9.9l-.354.353a7 7 0 0 1-9.9-9.9l1.415 1.415a5 5 0 1 0 7.071 7.071l.354-.354a5 5 0 0 0 0-7.07l-1.415-1.415 1.415-1.414zm6.718 6.011l-1.414-1.414a5 5 0 1 0-7.071-7.071l-.354.354a5 5 0 0 0 0 7.07l1.415 1.415-1.415 1.414-1.414-1.414a7 7 0 0 1 0-9.9l.354-.353a7 7 0 0 1 9.9 9.9z"/></svg>
+                </div>
+                <div class="w-11/12 justify-start items-center">
+                  <span class="text-white mx-auto">{{dataButton.text_btn}}</span>
+                </div>
+              </button>
+            </div>
+            <div v-if="typeBTN" class="w-full space-y-2">
+              <button @click="addBTNlink()" class="w-full h-12 flex px-2 my-1 border-2 border-blue-600 rounded-full justify-start items-center text-center text-lg font-medium">
+                <div class="w-1/12 justify-start items-center mr-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mx-auto" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.03-1.355L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626a9.448 9.448 0 0 0 3.84 2.046l.569.087c.185.01.37-.004.556-.013a1.99 1.99 0 0 0 .833-.231c.166-.088.244-.132.383-.22 0 0 .043-.028.125-.09.135-.1.218-.171.33-.288.083-.086.155-.187.21-.302.078-.163.156-.474.188-.733.024-.198.017-.306.014-.373-.004-.107-.093-.218-.19-.265l-.582-.261s-.87-.379-1.401-.621a.498.498 0 0 0-.177-.041.482.482 0 0 0-.378.127v-.002c-.005 0-.072.057-.795.933a.35.35 0 0 1-.368.13 1.416 1.416 0 0 1-.191-.066c-.124-.052-.167-.072-.252-.109l-.005-.002a6.01 6.01 0 0 1-1.57-1c-.126-.11-.243-.23-.363-.346a6.296 6.296 0 0 1-1.02-1.268l-.059-.095a.923.923 0 0 1-.102-.205c-.038-.147.061-.265.061-.265s.243-.266.356-.41a4.38 4.38 0 0 0 .263-.373c.118-.19.155-.385.093-.536-.28-.684-.57-1.365-.868-2.041-.059-.134-.234-.23-.393-.249-.054-.006-.108-.012-.162-.016a3.385 3.385 0 0 0-.403.004z"/></svg>
+                </div>
+                <div class="w-11/12 justify-start items-center">
+                  <span class="text-blue-600 font-bold mx-auto">Submit +</span>
                 </div>
               </button>
             </div>
@@ -192,6 +254,7 @@ export default {
       colorText           : '',
       colorBg             : '',
       imgBg               : '',
+      idLink              : '',
       dataProfile         : {
         'name'        : '',
         'handphone'   : '',
@@ -207,12 +270,60 @@ export default {
         'background_img'   : '',
       },
       modalAddLink   : false,
+      dataButton : {
+        'href'            : '',
+        'text_btn'        : '',
+        'text_btn_color'  : 'text-white',
+        'btn_color'       : '',
+        'icon_btn'        : '',
+      },
+      viewDataButton : [],
+      typeBTN : '',
       valueLinkAdd   : '',
+    }
+  },
+  watch: {
+    typeBTN: function (value) {
+      if(value=='wa'){
+        this.dataButton.href        = 'https://wa.me/send/?phone=62000000'
+        this.dataButton.btn_color   = 'bg-green-600'
+        this.dataButton.icon_btn    = '<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mx-auto" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.03-1.355L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626a9.448 9.448 0 0 0 3.84 2.046l.569.087c.185.01.37-.004.556-.013a1.99 1.99 0 0 0 .833-.231c.166-.088.244-.132.383-.22 0 0 .043-.028.125-.09.135-.1.218-.171.33-.288.083-.086.155-.187.21-.302.078-.163.156-.474.188-.733.024-.198.017-.306.014-.373-.004-.107-.093-.218-.19-.265l-.582-.261s-.87-.379-1.401-.621a.498.498 0 0 0-.177-.041.482.482 0 0 0-.378.127v-.002c-.005 0-.072.057-.795.933a.35.35 0 0 1-.368.13 1.416 1.416 0 0 1-.191-.066c-.124-.052-.167-.072-.252-.109l-.005-.002a6.01 6.01 0 0 1-1.57-1c-.126-.11-.243-.23-.363-.346a6.296 6.296 0 0 1-1.02-1.268l-.059-.095a.923.923 0 0 1-.102-.205c-.038-.147.061-.265.061-.265s.243-.266.356-.41a4.38 4.38 0 0 0 .263-.373c.118-.19.155-.385.093-.536-.28-.684-.57-1.365-.868-2.041-.059-.134-.234-.23-.393-.249-.054-.006-.108-.012-.162-.016a3.385 3.385 0 0 0-.403.004z"/></svg>'
+      }
+      if(value=='fb'){
+        this.dataButton.href        = 'https://fb.com/username'
+        this.dataButton.btn_color   = 'bg-blue-600'
+        this.dataButton.icon_btn    = '<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white pr-2" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z"/></svg>'
+      }
+      if(value=='twitter'){
+        this.dataButton.href        = 'https://twitter.com/username'
+        this.dataButton.btn_color   = 'bg-blue-400'
+        this.dataButton.icon_btn    = '<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mx-auto" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M22.162 5.656a8.384 8.384 0 0 1-2.402.658A4.196 4.196 0 0 0 21.6 4c-.82.488-1.719.83-2.656 1.015a4.182 4.182 0 0 0-7.126 3.814 11.874 11.874 0 0 1-8.62-4.37 4.168 4.168 0 0 0-.566 2.103c0 1.45.738 2.731 1.86 3.481a4.168 4.168 0 0 1-1.894-.523v.052a4.185 4.185 0 0 0 3.355 4.101 4.21 4.21 0 0 1-1.89.072A4.185 4.185 0 0 0 7.97 16.65a8.394 8.394 0 0 1-6.191 1.732 11.83 11.83 0 0 0 6.41 1.88c7.693 0 11.9-6.373 11.9-11.9 0-.18-.005-.362-.013-.54a8.496 8.496 0 0 0 2.087-2.165z"/></svg>'
+      }
+      if(value=='yt'){
+        this.dataButton.href        = 'https://www.youtube.com/channel/yourchanel'
+        this.dataButton.btn_color   = 'bg-red-600'
+        this.dataButton.icon_btn    = '<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mx-auto" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/></svg>'
+      }
+      if(value=='link'){
+        this.dataButton.href = ''
+        this.dataButton.btn_color   = 'bg-gray-800'
+        this.dataButton.icon_btn    = '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M13.06 8.11l1.415 1.415a7 7 0 0 1 0 9.9l-.354.353a7 7 0 0 1-9.9-9.9l1.415 1.415a5 5 0 1 0 7.071 7.071l.354-.354a5 5 0 0 0 0-7.07l-1.415-1.415 1.415-1.414zm6.718 6.011l-1.414-1.414a5 5 0 1 0-7.071-7.071l-.354.354a5 5 0 0 0 0 7.07l1.415 1.415-1.415 1.414-1.414-1.414a7 7 0 0 1 0-9.9l.354-.353a7 7 0 0 1 9.9 9.9z"/></svg>'
+      }
+    },
+    // text_btn: function(value){
+
+    // }
+    idLink: function(value){
+      // console.log(value.length)
+      if(value!=''){
+        this.getListBTN()
+      }
     }
   },
   mounted() {
     this.getProfile()
     this.getDataLink()
+    // this.getListBTN()
   },
   methods: {
     async getProfile(){
@@ -221,21 +332,48 @@ export default {
           // console.log(r.data)
           this.dataProfile = r.data[0]
           this.dataProfile.photo = this.urlAsset+'/'+r.data[0].photo
-          console.log(this.dataProfile.photo)
+          // console.log(this.dataProfile.photo)
         }
       })
     },
     async getDataLink(){
-      await this.$supabase.from('link_up').select().eq('user_id', this.user.id).then((res)=>{
+      await this.$supabase.from('link_up').select().eq('link', this.link).then((res)=>{
         if(res.error == null){
           console.log(res.data)
+          this.idLink = res.data[0].id
+          // console.log(this.idLink)
           this.dataLink = res.data[0]
+          if(res.data[0].text_color.length != 0 && res.data[0].text_color != '' && res.data[0].text_color != null){
+            this.colorText = res.data[0].text_color
+          }
+          if(res.data[0].background_type == 'color'){
+            if(res.data[0].background_color.length != 0 && res.data[0].background_color != '' && res.data[0].background_color != null){
+              this.colorBg = res.data[0].background_color
+            }
+          }
+          if(res.data[0].background_type == 'img'){
+            if(res.data[0].background_img.length != 0 && res.data[0].background_img != '' && res.data[0].background_img != null){
+              this.imgBg = this.urlAsset+'/'+res.data[0].background_img
+              // document.getElementById("bgPhoto").src = this.imgBg
+            }
+          }
           if(res.data[0].heading_photo.length != 0 && res.data[0].heading_photo != '' && res.data[0].heading_photo != null){
             console.log(res.data[0].heading_photo.length)
             this.dataLink.heading_photo = this.urlAsset+'/'+res.data[0].heading_photo
             this.dataProfile.photo = res.data[0].heading_photo
           }
           console.log(this.dataLink)
+        }
+      })
+    },
+    async getListBTN(){
+      // console.log(this.idLink)
+      await this.$supabase.from('btn_link').select().eq('link_up_id',this.idLink).eq('user_id',this.user.id).then((r)=>{
+        console.log(r)
+        if(r.error == null){
+          console.log(r.data.length)
+          console.log(r.data)
+          this.viewDataButton = r.data
         }
       })
     },
@@ -288,6 +426,8 @@ export default {
         oFReader.readAsDataURL(document.getElementById("imgBgSource").files[0]);
         console.log(files[0])
         this.imgBg = 'img'
+        // this.imgBg = 'img'
+        // this.dataLink.background_type = 'img'
         oFReader.onload = function(oFREvent) {
           document.getElementById("bgPhoto").src = oFREvent.target.result;
           this.previewPhoto = oFREvent.target.result;
@@ -348,6 +488,7 @@ export default {
           .from('link_up')
           .update([
           {
+            background_type: 'img',
             background_img: res.data['Key'],
           }
           ]).match({ user_id: this.$supabase.auth.user().id}).then((res)=>{
@@ -358,6 +499,29 @@ export default {
         }
         // return this.urlPhotoHeader = '';
       })
+    },
+    async typeLink(value){
+      this.typeBTN = value
+    },
+    async addBTNlink(){
+      // return console.log(this.dataButton)
+      console.log(this.dataButton)
+      await this.$supabase
+      .from('btn_link')
+      .insert([
+        {
+          link_up_id      : this.idLink,
+          href            : this.dataButton.href,
+          text_btn        : this.dataButton.text_btn,
+          text_btn_color  : this.dataButton.text_btn_color,
+          btn_color       : this.dataButton.btn_color,
+          icon_btn        : this.dataButton.icon_btn,
+          user_id         : this.user.id,
+        }
+      ]).then((res)=>{
+        console.log(res)
+      })
+
     },
     makeid(length) {
       var result           = '';
