@@ -83,14 +83,14 @@ export default {
         if(res.error == null){
 
           // console.log(res.data[0].id)
-          // console.log(res.data)
+          console.log(res.data)
           if(res.data.length==0){
             this.loadingData = false
             return this.noData = true
           }
           this.idLink = res.data[0].id
           this.dataLink = res.data[0]
-          if(res.data[0].text_color.length != 0 && res.data[0].text_color != '' && res.data[0].text_color != null){
+          if(res.data[0].text_color != null && res.data[0].text_color != '' && res.data[0].text_color.length != 0){
             this.colorText = res.data[0].text_color
           }
           if(res.data[0].background_type == 'color'){
@@ -104,7 +104,7 @@ export default {
               this.dataLink.background_img = this.urlAsset+'/'+res.data[0].background_img
             }
           }
-          if(res.data[0].heading_photo.length != 0 && res.data[0].heading_photo != '' && res.data[0].heading_photo != null){
+          if(res.data[0].heading_photo != null && res.data[0].heading_photo != '' && res.data[0].heading_photo.length != 0){
             // console.log(res.data[0].heading_photo.length)
             this.dataLink.heading_photo = this.urlAsset+'/'+res.data[0].heading_photo
             // this.dataProfile.photo = res.data[0].heading_photo
