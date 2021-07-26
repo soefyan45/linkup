@@ -115,18 +115,12 @@ export default {
         }
         this.loadingData = false
         return this.noData = true
-
       })
     },
     async getListBTN(){
-      // console.log(this.idLink)
-      await this.$supabase.from('btn_link').select().eq('link_up_id',this.idLink).then((r)=>{
-        // console.log(r)
+      await this.$supabase.from('btn_link').select().eq('link_up_id',this.idLink).order('id', { ascending: true }).then((r)=>{
         if(r.error == null){
-          // console.log(r.data.length)
           console.log(r.data)
-          // console.log(this.dataLink)
-          // this.dataLink.viewDataButton = r.data
           this.viewDataButton = r.data
         }
       })

@@ -100,9 +100,9 @@
             <div class="w-9/12 justify-start items-center">
               <span class="text-white mx-auto">{{databtn.text_btn}}</span>
             </div>
-            <div class="w-2/12 flex justify-start items-center text-white space-x-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-white h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="trash-2"><rect width="24" height="24" opacity="0"/><path d="M21 6h-5V4.33A2.42 2.42 0 0 0 13.5 2h-3A2.42 2.42 0 0 0 8 4.33V6H3a1 1 0 0 0 0 2h1v11a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8h1a1 1 0 0 0 0-2zM10 4.33c0-.16.21-.33.5-.33h3c.29 0 .5.17.5.33V6h-4zM18 19a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V8h12z"/><path d="M9 17a1 1 0 0 0 1-1v-4a1 1 0 0 0-2 0v4a1 1 0 0 0 1 1z"/><path d="M15 17a1 1 0 0 0 1-1v-4a1 1 0 0 0-2 0v4a1 1 0 0 0 1 1z"/></g></g></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="text-white h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="edit-2"><rect width="24" height="24" opacity="0"/><path d="M19 20H5a1 1 0 0 0 0 2h14a1 1 0 0 0 0-2z"/><path d="M5 18h.09l4.17-.38a2 2 0 0 0 1.21-.57l9-9a1.92 1.92 0 0 0-.07-2.71L16.66 2.6A2 2 0 0 0 14 2.53l-9 9a2 2 0 0 0-.57 1.21L4 16.91a1 1 0 0 0 .29.8A1 1 0 0 0 5 18zM15.27 4L18 6.73l-2 1.95L13.32 6zm-8.9 8.91L12 7.32l2.7 2.7-5.6 5.6-3 .28z"/></g></g></svg>
+            <div class="w-2/12 flex justify-end items-center text-white space-x-2">
+              <svg @click="removeBTNlink(databtn.id)" xmlns="http://www.w3.org/2000/svg" class="text-white h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="trash-2"><rect width="24" height="24" opacity="0"/><path d="M21 6h-5V4.33A2.42 2.42 0 0 0 13.5 2h-3A2.42 2.42 0 0 0 8 4.33V6H3a1 1 0 0 0 0 2h1v11a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8h1a1 1 0 0 0 0-2zM10 4.33c0-.16.21-.33.5-.33h3c.29 0 .5.17.5.33V6h-4zM18 19a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V8h12z"/><path d="M9 17a1 1 0 0 0 1-1v-4a1 1 0 0 0-2 0v4a1 1 0 0 0 1 1z"/><path d="M15 17a1 1 0 0 0 1-1v-4a1 1 0 0 0-2 0v4a1 1 0 0 0 1 1z"/></g></g></svg>
+              <!-- <svg @click="editBTNlink(databtn.id)" xmlns="http://www.w3.org/2000/svg" class="text-white h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="edit-2"><rect width="24" height="24" opacity="0"/><path d="M19 20H5a1 1 0 0 0 0 2h14a1 1 0 0 0 0-2z"/><path d="M5 18h.09l4.17-.38a2 2 0 0 0 1.21-.57l9-9a1.92 1.92 0 0 0-.07-2.71L16.66 2.6A2 2 0 0 0 14 2.53l-9 9a2 2 0 0 0-.57 1.21L4 16.91a1 1 0 0 0 .29.8A1 1 0 0 0 5 18zM15.27 4L18 6.73l-2 1.95L13.32 6zm-8.9 8.91L12 7.32l2.7 2.7-5.6 5.6-3 .28z"/></g></g></svg> -->
             </div>
           </button>
         </div>
@@ -172,6 +172,152 @@
             <div class="w-full">
               <label>Your Text</label>
               <input v-model="dataButton.text_btn" class="w-full h-8 items-center border-2 rounded border-gray-400 px-1" placeholder="your text">
+            </div>
+            <div v-if="sideLeft==true || sideRigth==true" class="w-full row">
+              <label>Slot Top Button</label>
+              <!-- v-bind:class="{ 'justify-end': sideLeft==false, 'justify-start': sideRigth==false}" -->
+              <div class="space-x-2 flex w-full">
+                <div v-bind:class="{'rounded-lg border-2 border-green-300 text-green-400':sideLeft==false,'bg-green-300 rounded-lg':sideLeft==true}" class="w-6/12 items-center">
+                  <button @click="setLotPosition('l')" class="w-full text-center mx-auto py-2 font-semibold">Left</button>
+                </div>
+                <div v-bind:class="{'rounded-lg border-2 border-blue-300 text-blue-400':sideRigth==false,'bg-blue-300 rounded-lg':sideRigth==true}" class="w-6/12 items-center">
+                  <button @click="setLotPosition('r')" class="w-full text-center mx-auto mx-2 py-2 font-semibold">Right</button>
+                </div>
+              </div>
+            </div>
+            <div class="w-full row">
+              <button @click="seletIcon('t')" v-if="!iconList" class="h-8 px-2 my-1 bg-blue-400 rounded text-white text-center font-bold">Choose Icon</button>
+              <button @click="seletIcon('f')" v-if="iconList" class="h-8 px-2 my-1 bg-blue-400 rounded text-center font-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-white" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M4.52 5.934L1.393 2.808l1.415-1.415 19.799 19.8-1.415 1.414-3.31-3.31A10.949 10.949 0 0 1 12 21c-5.392 0-9.878-3.88-10.819-9a10.982 10.982 0 0 1 3.34-6.066zm10.237 10.238l-1.464-1.464a3 3 0 0 1-4.001-4.001L7.828 9.243a5 5 0 0 0 6.929 6.929zM7.974 3.76C9.221 3.27 10.58 3 12 3c5.392 0 9.878 3.88 10.819 9a10.947 10.947 0 0 1-2.012 4.592l-3.86-3.86a5 5 0 0 0-5.68-5.68L7.974 3.761z"/></svg>
+              </button>
+              <div v-if="iconList" class="w-full h-32 bg-blue-200 px-2 py-2 rounded shadow-2xl shadow-inner ">
+                <div class="h-full grid grid-flow-row grid-cols-8 gap-2 overflow-y-auto no-scrollbar">
+                  <div v-for="svg of svgList" :key="svg.id" @click="customIcon(svg.svg)" class="items-center justify-center rounded bg-black h-10 flex" v-bind:class="{ 'border-4 border-blue-400': dataButton.icon_btn==svg.svg }">
+                    <div v-html="svg.svg"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div v-if="typeBTN" class="w-full space-y-2">
+              <label>Preview Button Link</label>
+              <button v-if="typeBTN=='wa'" class="w-full h-12 flex px-2 my-1 bg-green-600 rounded-full justify-start items-center text-center text-lg font-medium">
+                <div class="w-1/12 justify-start items-center mr-1">
+                  <div v-html="dataButton.icon_btn"></div>
+                  <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mx-auto" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.03-1.355L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626a9.448 9.448 0 0 0 3.84 2.046l.569.087c.185.01.37-.004.556-.013a1.99 1.99 0 0 0 .833-.231c.166-.088.244-.132.383-.22 0 0 .043-.028.125-.09.135-.1.218-.171.33-.288.083-.086.155-.187.21-.302.078-.163.156-.474.188-.733.024-.198.017-.306.014-.373-.004-.107-.093-.218-.19-.265l-.582-.261s-.87-.379-1.401-.621a.498.498 0 0 0-.177-.041.482.482 0 0 0-.378.127v-.002c-.005 0-.072.057-.795.933a.35.35 0 0 1-.368.13 1.416 1.416 0 0 1-.191-.066c-.124-.052-.167-.072-.252-.109l-.005-.002a6.01 6.01 0 0 1-1.57-1c-.126-.11-.243-.23-.363-.346a6.296 6.296 0 0 1-1.02-1.268l-.059-.095a.923.923 0 0 1-.102-.205c-.038-.147.061-.265.061-.265s.243-.266.356-.41a4.38 4.38 0 0 0 .263-.373c.118-.19.155-.385.093-.536-.28-.684-.57-1.365-.868-2.041-.059-.134-.234-.23-.393-.249-.054-.006-.108-.012-.162-.016a3.385 3.385 0 0 0-.403.004z"/></svg> -->
+                </div>
+                <div class="w-11/12 justify-start items-center">
+                  <span class="text-white mx-auto">{{dataButton.text_btn}}</span>
+                </div>
+              </button>
+              <button v-if="typeBTN=='fb'" class="w-full h-12 flex px-2 my-1 bg-blue-600 rounded-full justify-start items-center text-center text-lg font-medium">
+                <div class="w-1/12 justify-start items-center mr-1">
+                <div v-html="dataButton.icon_btn"></div>
+                  <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white pr-2" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z"/></svg> -->
+                </div>
+                <div class="w-11/12 justify-start items-center">
+                  <span class="text-white mx-auto">{{dataButton.text_btn}}</span>
+                </div>
+              </button>
+              <button v-if="typeBTN=='twitter'" class="w-full h-12 flex px-2 my-1 bg-blue-400 rounded-full justify-start items-center text-center text-lg font-medium">
+                <div class="w-1/12 justify-start items-center mr-1">
+                  <div v-html="dataButton.icon_btn"></div>
+                  <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mx-auto" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M22.162 5.656a8.384 8.384 0 0 1-2.402.658A4.196 4.196 0 0 0 21.6 4c-.82.488-1.719.83-2.656 1.015a4.182 4.182 0 0 0-7.126 3.814 11.874 11.874 0 0 1-8.62-4.37 4.168 4.168 0 0 0-.566 2.103c0 1.45.738 2.731 1.86 3.481a4.168 4.168 0 0 1-1.894-.523v.052a4.185 4.185 0 0 0 3.355 4.101 4.21 4.21 0 0 1-1.89.072A4.185 4.185 0 0 0 7.97 16.65a8.394 8.394 0 0 1-6.191 1.732 11.83 11.83 0 0 0 6.41 1.88c7.693 0 11.9-6.373 11.9-11.9 0-.18-.005-.362-.013-.54a8.496 8.496 0 0 0 2.087-2.165z"/></svg> -->
+                </div>
+                <div class="w-11/12 justify-start items-center">
+                  <span class="text-white mx-auto">{{dataButton.text_btn}}</span>
+                </div>
+              </button>
+              <button v-if="typeBTN=='yt'" class="w-full h-12 flex px-2 my-1 bg-red-600 rounded-full justify-start items-center text-center text-lg font-medium">
+                <div class="w-1/12 justify-start items-center mr-1">
+                  <div v-html="dataButton.icon_btn"></div>
+                  <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mx-auto" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/></svg> -->
+                </div>
+                <div class="w-11/12 justify-start items-center">
+                  <span class="text-white mx-auto">{{dataButton.text_btn}}</span>
+                </div>
+              </button>
+              <button v-if="typeBTN=='link'" class="w-full h-12 flex px-2 my-1 bg-gray-800 rounded-full justify-start items-center text-center text-lg font-medium">
+                <div class="w-1/12 justify-start items-center mr-1">
+                  <div v-html="dataButton.icon_btn"></div>
+                  <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M13.06 8.11l1.415 1.415a7 7 0 0 1 0 9.9l-.354.353a7 7 0 0 1-9.9-9.9l1.415 1.415a5 5 0 1 0 7.071 7.071l.354-.354a5 5 0 0 0 0-7.07l-1.415-1.415 1.415-1.414zm6.718 6.011l-1.414-1.414a5 5 0 1 0-7.071-7.071l-.354.354a5 5 0 0 0 0 7.07l1.415 1.415-1.415 1.414-1.414-1.414a7 7 0 0 1 0-9.9l.354-.353a7 7 0 0 1 9.9 9.9z"/></svg> -->
+                </div>
+                <div class="w-11/12 justify-start items-center">
+                  <span class="text-white mx-auto">{{dataButton.text_btn}}</span>
+                </div>
+              </button>
+            </div>
+            <div v-if="typeBTN" class="w-full space-y-2">
+              <button @click="addBTNlink()" class="w-full h-12 flex px-2 my-1 border-2 border-blue-600 rounded-full justify-start items-center text-center text-lg font-medium">
+                <div class="w-1/12 justify-start items-center mr-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mx-auto" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.03-1.355L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626a9.448 9.448 0 0 0 3.84 2.046l.569.087c.185.01.37-.004.556-.013a1.99 1.99 0 0 0 .833-.231c.166-.088.244-.132.383-.22 0 0 .043-.028.125-.09.135-.1.218-.171.33-.288.083-.086.155-.187.21-.302.078-.163.156-.474.188-.733.024-.198.017-.306.014-.373-.004-.107-.093-.218-.19-.265l-.582-.261s-.87-.379-1.401-.621a.498.498 0 0 0-.177-.041.482.482 0 0 0-.378.127v-.002c-.005 0-.072.057-.795.933a.35.35 0 0 1-.368.13 1.416 1.416 0 0 1-.191-.066c-.124-.052-.167-.072-.252-.109l-.005-.002a6.01 6.01 0 0 1-1.57-1c-.126-.11-.243-.23-.363-.346a6.296 6.296 0 0 1-1.02-1.268l-.059-.095a.923.923 0 0 1-.102-.205c-.038-.147.061-.265.061-.265s.243-.266.356-.41a4.38 4.38 0 0 0 .263-.373c.118-.19.155-.385.093-.536-.28-.684-.57-1.365-.868-2.041-.059-.134-.234-.23-.393-.249-.054-.006-.108-.012-.162-.016a3.385 3.385 0 0 0-.403.004z"/></svg>
+                </div>
+                <div class="w-11/12 justify-start items-center">
+                  <span class="text-blue-600 font-bold mx-auto">Submit +</span>
+                </div>
+              </button>
+            </div>
+          </div>
+		    </div>
+      </div>
+	  </div>
+    <div v-if="modalEditLink" class="main-modal fixed w-full h-100 inset-0 z-50 overflow-y-hidden flex justify-center items-center animated fadeIn faster"
+		  style="background: rgba(0,0,0,.7);">
+      <div class="row w-full">
+        <div class="border border-teal-500 shadow-lg modal-container bg-white w-11/12 md:max-w-md mx-auto  rounded-lg shadow-lg z-50 overflow-y-auto">
+			    <div class="flex h-12 w-full bg-blue-300 items-center justify-between rounded-lg">
+            <div class="relative pl-2 w-8/12 items-center">
+              <h4 class="text-gray-600 font-bold">Edits Link</h4>
+            </div>
+            <div class="flex items-center justify-end w-4/12">
+              <button @click="unEditLink()" class="px-2 py-1 px-auto mx-2 my-auto items-center font-medium text-gray-800 fomt-medium">&#10005;</button>
+            </div>
+          </div>
+          <div class="w-full flex h-12 px-2 my-4 space-x-2 justify-center items-center text-center">
+            <div @click="typeLink('wa')" class="w-2/12 h-full flex items-center bg-green-600 rounded-lg" v-bind:class="{ 'border-4 border-dotted border-white': typeBTN=='wa' }">
+              <!-- WA -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mx-auto" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.03-1.355L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626a9.448 9.448 0 0 0 3.84 2.046l.569.087c.185.01.37-.004.556-.013a1.99 1.99 0 0 0 .833-.231c.166-.088.244-.132.383-.22 0 0 .043-.028.125-.09.135-.1.218-.171.33-.288.083-.086.155-.187.21-.302.078-.163.156-.474.188-.733.024-.198.017-.306.014-.373-.004-.107-.093-.218-.19-.265l-.582-.261s-.87-.379-1.401-.621a.498.498 0 0 0-.177-.041.482.482 0 0 0-.378.127v-.002c-.005 0-.072.057-.795.933a.35.35 0 0 1-.368.13 1.416 1.416 0 0 1-.191-.066c-.124-.052-.167-.072-.252-.109l-.005-.002a6.01 6.01 0 0 1-1.57-1c-.126-.11-.243-.23-.363-.346a6.296 6.296 0 0 1-1.02-1.268l-.059-.095a.923.923 0 0 1-.102-.205c-.038-.147.061-.265.061-.265s.243-.266.356-.41a4.38 4.38 0 0 0 .263-.373c.118-.19.155-.385.093-.536-.28-.684-.57-1.365-.868-2.041-.059-.134-.234-.23-.393-.249-.054-.006-.108-.012-.162-.016a3.385 3.385 0 0 0-.403.004z"/></svg>
+            </div>
+            <div @click="typeLink('fb')" class="w-2/12 h-full flex items-center bg-blue-600 rounded-lg" v-bind:class="{ 'border-4 border-dotted border-white': typeBTN=='fb' }">
+              <!-- FB -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mx-auto" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            </div>
+            <div @click="typeLink('twitter')" class="w-2/12 h-full flex items-center bg-blue-400 rounded-lg" v-bind:class="{ 'border-4 border-dotted border-white': typeBTN=='twitter' }">
+              <!-- Twitter -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mx-auto" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M22.162 5.656a8.384 8.384 0 0 1-2.402.658A4.196 4.196 0 0 0 21.6 4c-.82.488-1.719.83-2.656 1.015a4.182 4.182 0 0 0-7.126 3.814 11.874 11.874 0 0 1-8.62-4.37 4.168 4.168 0 0 0-.566 2.103c0 1.45.738 2.731 1.86 3.481a4.168 4.168 0 0 1-1.894-.523v.052a4.185 4.185 0 0 0 3.355 4.101 4.21 4.21 0 0 1-1.89.072A4.185 4.185 0 0 0 7.97 16.65a8.394 8.394 0 0 1-6.191 1.732 11.83 11.83 0 0 0 6.41 1.88c7.693 0 11.9-6.373 11.9-11.9 0-.18-.005-.362-.013-.54a8.496 8.496 0 0 0 2.087-2.165z"/></svg>
+            </div>
+            <div @click="typeLink('yt')" class="w-2/12 h-full flex items-center bg-red-600 rounded-lg" v-bind:class="{ 'border-4 border-dotted border-white': typeBTN=='yt' }">
+              <!-- YT -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white mx-auto" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/></svg>
+            </div>
+            <div @click="typeLink('link')" class="w-4/12 h-full flex items-center bg-gray-800 rounded-lg" v-bind:class="{ 'border-4 border-dotted border-white': typeBTN=='link' }">
+              <div class="flex mx-auto items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M13.06 8.11l1.415 1.415a7 7 0 0 1 0 9.9l-.354.353a7 7 0 0 1-9.9-9.9l1.415 1.415a5 5 0 1 0 7.071 7.071l.354-.354a5 5 0 0 0 0-7.07l-1.415-1.415 1.415-1.414zm6.718 6.011l-1.414-1.414a5 5 0 1 0-7.071-7.071l-.354.354a5 5 0 0 0 0 7.07l1.415 1.415-1.415 1.414-1.414-1.414a7 7 0 0 1 0-9.9l.354-.353a7 7 0 0 1 9.9 9.9z"/></svg>
+                <span class="text-center text-white mx-auto py-auto font-medium text-xs">Link</span>
+              </div>
+            </div>
+          </div>
+          <div v-if="!typeBTN" class="w-full px-2 pb-4 space-y-2 items-center">
+            <h4 class="text-red-400 font-medium text-lg text-center">select the button type above</h4>
+          </div>
+          <div v-if="typeBTN" class="w-full px-2 pb-4 space-y-2">
+            <div class="w-full">
+              <label>Your Link Full</label>
+              <input v-model="dataButton.href" class="w-full h-8 items-center border-2 rounded border-gray-400 px-1" placeholder="your link">
+            </div>
+            <div class="w-full">
+              <label>Your Text</label>
+              <input v-model="dataButton.text_btn" class="w-full h-8 items-center border-2 rounded border-gray-400 px-1" placeholder="your text">
+            </div>
+            <div class="w-full row">
+              <label>Slot Top Button</label>
+              <div class="space-x-2 flex w-full">
+                <div class="w-6/12 items-center">
+                  <button class="w-full text-center mx-auto py-2 bg-green-300 rounded-lg font-semibold">Left</button>
+                </div>
+                <div class="w-6/12 items-center">
+                  <button class="w-full text-center mx-auto mx-2 py-2 bg-blue-300 rounded-lg font-semibold">Right</button>
+                </div>
+              </div>
             </div>
             <div class="w-full flex">
               <!-- Next Pengembangan -->
@@ -269,17 +415,27 @@ export default {
         'background_color' : '',
         'background_img'   : '',
       },
-      modalAddLink   : false,
+      modalAddLink    : false,
+      modalEditLink   : false,
       dataButton : {
         'href'            : '',
         'text_btn'        : '',
         'text_btn_color'  : 'text-white',
         'btn_color'       : '',
         'icon_btn'        : '',
+        'side_left'       : '',
+        'side_right'      : '',
       },
-      viewDataButton : [],
-      typeBTN : '',
-      valueLinkAdd   : '',
+      sideRigth           : true,
+      sideLeft            : true,
+      Sideleft            : true,
+      Siderigth           : true,
+      viewDataButton      : [],
+      typeBTN             : '',
+      iconList            : false,
+      svgList             : [],
+      iconCustom          : '',
+      valueLinkAdd        : '',
     }
   },
   watch: {
@@ -321,11 +477,22 @@ export default {
     }
   },
   mounted() {
+    this.getSVG()
     this.getProfile()
     this.getDataLink()
     // this.getListBTN()
   },
   methods: {
+    async getSVG(){
+      await this.$supabase.from('svg_list').select().then((svg)=>{
+        // console.log('ss')
+        // console.log(svg)
+        if(svg.error==null){
+          console.log(svg.data)
+          this.svgList = svg.data
+        }
+      })
+    },
     async getProfile(){
       await this.$supabase.from('profile_user').select().eq('user_id', this.user.id).then((r)=>{
         if(r.error == null){
@@ -368,12 +535,29 @@ export default {
     },
     async getListBTN(){
       // console.log(this.idLink)
-      await this.$supabase.from('btn_link').select().eq('link_up_id',this.idLink).eq('user_id',this.user.id).then((r)=>{
+      await this.$supabase.from('btn_link').select().eq('link_up_id',this.idLink).eq('user_id',this.user.id).order('id', { ascending: true }).then((r)=>{
+        console.log('kliked')
         console.log(r)
         if(r.error == null){
           console.log(r.data.length)
           console.log(r.data)
           this.viewDataButton = r.data
+        }
+      });
+      this.$supabase.from('btn_link').select('*',{ count: 'exact' }).eq('link_up_id',this.idLink).eq('user_id',this.user.id).eq('side_left',1).then((lf)=>{
+        console.log('kri')
+        console.log(lf)
+        if(lf.count==1){
+          this.sideLeft = false
+          return this.Sideleft = false
+        }
+      })
+      this.$supabase.from('btn_link').select('*',{ count: 'exact' }).eq('link_up_id',this.idLink).eq('user_id',this.user.id).eq('side_right',1).then((rg)=>{
+        console.log('knan')
+        console.log(rg)
+        if(rg.count==1){
+          this.sideRigth = false
+          return this.Siderigth = false
         }
       })
     },
@@ -385,9 +569,9 @@ export default {
           title_link        : this.dataLink.title_link,
           text_color        : this.dataLink.text_color,
           description       : this.dataLink.description,
-          background_type    : this.dataLink.background_type,
-          background_color   : this.dataLink.background_color,
-          background_img     : this.dataLink.background_img,
+          background_type   : this.dataLink.background_type,
+          background_color  : this.dataLink.background_color,
+          background_img    : this.dataLink.background_img,
         }
       ])
       .match({ user_id: this.$supabase.auth.user().id, id: this.idLink}).then((res)=>{
@@ -495,16 +679,49 @@ export default {
             console.log(res)
             this.dataLink.background_img = res.data['Key']
           })
-          // return this.urlPhotoHeader = res.data['Key']
         }
-        // return this.urlPhotoHeader = '';
       })
+    },
+    seletIcon(v){
+      if(v=='f'){
+        this.iconList = false
+      }
+      if(v=='t'){
+        this.iconList = true
+      }
+    },
+    customIcon(svg){
+      this.iconCustom = svg
+      this.dataButton.icon_btn = svg
     },
     async typeLink(value){
       this.typeBTN = value
     },
+    setLotPosition(p){
+      if(p=='r' && this.Siderigth==true){
+        if(this.Sideleft==false){
+          this.sideRigth              = false
+          this.dataButton.side_right  = 1
+          return this.dataButton.side_left   = ''
+        }
+        this.sideLeft               = true
+        this.sideRigth              = false
+        this.dataButton.side_right  = 1
+        this.dataButton.side_left   = ''
+      }
+      if(p=='l' && this.Sideleft==true){
+        if(this.Siderigth==false){
+          this.sideLeft               = false
+          this.dataButton.side_right  = ''
+          return this.dataButton.side_left   = 1
+        }
+        this.sideLeft               = false
+        this.sideRigth              = true
+        this.dataButton.side_right  = ''
+        this.dataButton.side_left   = 1
+      }
+    },
     async addBTNlink(){
-      // return console.log(this.dataButton)
       console.log(this.dataButton)
       await this.$supabase
       .from('btn_link')
@@ -516,12 +733,34 @@ export default {
           text_btn_color  : this.dataButton.text_btn_color,
           btn_color       : this.dataButton.btn_color,
           icon_btn        : this.dataButton.icon_btn,
+          side_left       : this.dataButton.side_left,
+          side_right      : this.dataButton.side_right,
           user_id         : this.user.id,
         }
       ]).then((res)=>{
         console.log(res)
+        if(res.error==null){
+          this.typeBTN                    = ''
+          this.dataButton.href            =''
+          this.dataButton.text_btn        =''
+          this.dataButton.text_btn_color  ='text-white'
+          this.dataButton.btn_color       =''
+          this.dataButton.icon_btn        =''
+          this.dataButton.side_left       =''
+          this.dataButton.side_right      =''
+          this.getListBTN()
+        }
       })
-
+    },
+    async removeBTNlink(idbtn){
+      await this.$supabase.from('btn_link').delete().match({ id: idbtn }).then((r)=>{
+        if(r.error==null){
+          this.getListBTN()
+        }
+      })
+    },
+    async editBTNlink(idbtn){
+      this.modalEditLink = true
     },
     makeid(length) {
       var result           = '';
@@ -538,12 +777,32 @@ export default {
     },
     unAddLink(){
       this.modalAddLink = false;
+      this.typeBTN                    = ''
+      this.dataButton.href            =''
+      this.dataButton.text_btn        =''
+      this.dataButton.text_btn_color  ='text-white'
+      this.dataButton.btn_color       =''
+      this.dataButton.icon_btn        =''
+      this.dataButton.side_left       =''
+      this.dataButton.side_right      =''
+    },
+    unEditLink(){
+      this.modalEditLink = false;
     }
   },
 }
 </script>
 
 <style>
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 .icon-name {
   font-size: 512%;
 }

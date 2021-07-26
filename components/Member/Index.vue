@@ -83,7 +83,7 @@
                   </div>
                 </div>
                 <div class="px-2 py-2 whitespace-no-wrap">
-                  <div class="leading-5 font-bold text-white font-medium">{{listLink.link}}</div>
+                  <div class="leading-5 text-white font-semibold">{{listLink.link}}</div>
                     <div class="leading-5 font-bold text-gray-900">
                       https://linkup.sn/{{listLink.link}}
                     </div>
