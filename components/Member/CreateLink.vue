@@ -390,7 +390,7 @@ export default {
           background_img     : this.dataLink.background_img,
         }
       ])
-      .match({ user_id: this.$supabase.auth.user().id}).then((res)=>{
+      .match({ user_id: this.$supabase.auth.user().id, id: this.idLink}).then((res)=>{
         console.log(res)
       })
     },
@@ -465,7 +465,7 @@ export default {
           {
             heading_photo: res.data['Key'],
           }
-          ]).match({ user_id: this.$supabase.auth.user().id}).then((res)=>{
+          ]).match({ user_id: this.$supabase.auth.user().id,id:this.idLink}).then((res)=>{
             console.log(res)
           })
           return this.urlPhotoHeader = res.data['Key']
@@ -491,7 +491,7 @@ export default {
             background_type: 'img',
             background_img: res.data['Key'],
           }
-          ]).match({ user_id: this.$supabase.auth.user().id}).then((res)=>{
+          ]).match({ user_id: this.$supabase.auth.user().id, id: this.idLink}).then((res)=>{
             console.log(res)
             this.dataLink.background_img = res.data['Key']
           })
