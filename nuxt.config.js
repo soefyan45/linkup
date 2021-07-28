@@ -65,7 +65,7 @@ export default {
   },
   env: {
     URL_ASSETS    : "https://gbckelxngttdredvrsfh.supabase.co/storage/v1/object/public",
-    URL_LINK : "https://linkup.sn:3000/"
+    URL_LINK : "https://linkup.my.id/"
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
