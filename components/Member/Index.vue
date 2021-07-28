@@ -51,7 +51,7 @@
         <input type="text" v-model="nameProfile" class="h-full w-full border-2 rounded-lg px-2" placeholder="Type your name">
       </div>
       <div class="w-full h-10 items-center">
-        <input v-model="phoneNumberProfile" class="h-full w-full border-2 rounded-lg px-2" placeholder="Type your phone number">
+        <input v-model="phoneNumberProfile" pattern="^[0-9]*$" class="h-full w-full border-2 rounded-lg px-2" placeholder="Type your phone number">
       </div>
       <div class="w-full flex h-10 justify-end">
         <button @click="updateProfile()" class="my-2 px-4 bg-green-400 rounded text-white font-bold">Submit</button>
@@ -172,6 +172,14 @@ export default {
   watch: {
     valueLinkCreate: function () {
       this.alertLinkCreate = ''
+      var letters = /^[A-Za-z0-9]+$/;
+      if(this.valueLinkCreate.match(letters)){
+        return true;
+      }
+      let str = this.valueLinkCreate
+      str = str.substring(0, str.length - 1)
+      this.valueLinkCreate = str
+      // return this.alertLinkCreate = 'character not allowed'
     }
   },
   mounted() {
@@ -242,6 +250,9 @@ export default {
       // valueLinkCreate
       if(this.valueLinkCreate=='' || this.valueLinkCreate==null){
         return this.alertLinkCreate = 'please type something !!!';
+      }
+      if(this.countLink>1){
+        return this.alertLinkCreate = 'just allow create 1 link !!!';
       }
       this.$supabase.from('link_up').select('*', { count: 'exact' }).eq('link', this.valueLinkCreate).then((res)=>{
         // console.log(res)
@@ -320,6 +331,15 @@ export default {
         }
         return this.urlPhotoProfile = '';
       })
+    },
+    allLetter(){
+      var letters = /^[A-Za-z]+$/;
+      if(this.valueLinkCreate.match(letters)){
+        // alert('Your name have accepted : you can try another');
+        return true;
+      }
+      let val = this.valueLinkCreate.substring(0, str.length - 1)
+      this.valueLinkCreate = val
     },
     makeid(length) {
       var result           = '';

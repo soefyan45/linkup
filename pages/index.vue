@@ -1,7 +1,15 @@
 <template>
-  <Tutorial/>
+  <index/>
 </template>
 
 <script>
-export default {}
+import index from '~/components/Index/Index.vue'
+export default {
+  components: { index },
+
+}
 </script>
+
+<style>
+
+</style>

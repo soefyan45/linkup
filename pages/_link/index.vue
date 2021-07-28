@@ -1,6 +1,13 @@
 <template>
 <div class="">
-  <div v-if="!noData" class="row items-center min-h-screen bg-no-repeat bg-cover bg-center" v-bind:style="{ backgroundImage: 'url(' + dataLink.background_img + ')' }">
+
+  <div v-if="!noData && dataLink.background_type=='img'" class="row items-center min-h-screen bg-no-repeat bg-cover bg-center" v-bind:style="{ backgroundImage: 'url(' + dataLink.background_img + ')' }">
+    <!-- {{ dataLink.background_img }} -->
+    <div class="max-w-md mx-auto min-h-screen ">
+      <linkView :dataLink="dataLink" :viewDataButton="viewDataButton"/>
+    </div>
+  </div>
+  <div v-if="!noData && dataLink.background_type=='color'" class="row items-center min-h-screen " v-bind:class="dataLink.background_color">
     <!-- {{ dataLink.background_img }} -->
     <div class="max-w-md mx-auto min-h-screen ">
       <linkView :dataLink="dataLink" :viewDataButton="viewDataButton"/>
@@ -118,6 +125,7 @@ export default {
       })
     },
     async getListBTN(){
+      // console.log(this.dataLink.background_color)
       await this.$supabase.from('btn_link').select().eq('link_up_id',this.idLink).order('id', { ascending: true }).then((r)=>{
         if(r.error == null){
           console.log(r.data)

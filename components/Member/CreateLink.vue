@@ -1,6 +1,16 @@
 <template>
   <div>
-    <div class="mx-4 min-h-screen">
+    <div v-if="!yourData" class="mx-4 min-h-screen">
+      <!-- <h1 class="font-bold text-gray-600 text-2xl pt-2">Short Url</h1> -->
+      <div class="row">
+        <div class="row w-full h-10 rounded-lg items-center space-y-2">
+          <h1 class="font-bold text-red-600 text-2xl pt-2">Data Not Found</h1>
+          <nuxt-link to="/members" class="px-4 py-2 bg-red-500 text-white font-bold rounded">return Back</nuxt-link>
+        </div>
+        <!-- <span class="mx-2 text-gray-300 font-medium text-sm">Leave empty for a random generated one</span> -->
+      </div>
+    </div>
+    <div v-if="yourData" class="mx-4 min-h-screen">
       <h1 class="font-bold text-gray-600 text-2xl pt-2">Short Url</h1>
       <div class="row">
         <div class="flex w-full h-10 border-2 border-blue-300 rounded-lg items-center">
@@ -392,6 +402,7 @@ export default {
       link                : `${this.$route.params.id}`,
       urlAsset            : process.env.URL_ASSETS,
       user                : this.$supabase.auth.user(),
+      yourData            : true,
       previewPhoto        : '',
       filePhotoHeader     : '',
       filePhotoBg         : '',
@@ -504,8 +515,12 @@ export default {
       })
     },
     async getDataLink(){
-      await this.$supabase.from('link_up').select().eq('link', this.link).then((res)=>{
+      await this.$supabase.from('link_up').select().eq('link', this.link).eq('user_id',this.user.id).then((res)=>{
         if(res.error == null){
+          if(res.data.length==0){
+            // console.log('data tidak di temukan')
+            return this.yourData = false
+          }
           console.log(res.data)
           this.idLink = res.data[0].id
           // console.log(this.idLink)
