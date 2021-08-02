@@ -1,8 +1,8 @@
 <template>
 <div class="h-screen w-screen bg-gray-100">
   <div class="h-24 row w-screen items-center py-2">
-    <div class="h-18 lg:h-20 w-11/12 lg:w-8/12 flex rounded-full bg-white mx-auto justify-between py-2 px-8 items-center">
-      <div class="w-6/12 flex h-full justify-star">
+    <div class="h-18 lg:h-20 w-8/12 lg:w-6/12 flex rounded-full bg-white mx-auto justify-between py-2 px-8 items-center">
+      <div class="w-6/12 flex h-full justify-star items-center">
         <div class="w-3/12 h-full items-center flex">
           <!-- <img src="https://gbckelxngttdredvrsfh.supabase.in/storage/v1/object/public/assets/design/link-up.png" class="object-fit "> -->
           <h1 class="text-2xl lg:text-4xl font-semibold text-blue-600 my-auto mx-2">LinkUp</h1>

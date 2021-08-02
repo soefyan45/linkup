@@ -1,5 +1,5 @@
 <template>
-<div class="max-w-md mx-auto font-sanspro">
+<div class="max-w-md mx-auto font-poppins">
 <auth/>
 </div>
 </template>

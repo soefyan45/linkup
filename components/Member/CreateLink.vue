@@ -15,7 +15,7 @@
       <div class="row">
         <div class="flex w-full h-10 border-2 border-blue-300 rounded-lg items-center">
           <div class="w-5/12 h-full bg-gray-200 rounded-l flex items-center justify-center">
-            <span class="font-bold text-gray-400 items-center">https://linkup.sn</span>
+            <span class="font-bold text-gray-400 items-center">https://linkup.my.id</span>
           </div>
           <div class="w-7/12 bg-white rounded-r text-center items-center">
             <input type="text" v-model="link" readonly class="w-full px-2 my-auto items-center text-gray-800 font-medium rounded outline-none focus:outline-none">
@@ -130,8 +130,11 @@
             </div>
           </div>
         </div>
-        <div class="w-full flex justify-end">
-          <button @click="submitCreateLink()" class="px-6 my-2 rounded bg-blue-400 text-lg font-bold text-white">Submit</button>
+        <div class="w-full flex justify-end space-x-2">
+          <button @click="openLink(dataLink.link)" class="flex px-6 my-2 rounded bg-green-400 text-lg text-white text-center items-center">
+            Preview &nbsp;<svg class="h-5 w-5 text-white text-center mx-auto my-auto" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M1.181 12C2.121 6.88 6.608 3 12 3c5.392 0 9.878 3.88 10.819 9-.94 5.12-5.427 9-10.819 9-5.392 0-9.878-3.88-10.819-9zM12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0-2a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+          </button>
+          <button @click="submitCreateLink()" class="px-6 my-2 rounded bg-blue-400 text-lg text-white">Submit</button>
         </div>
       </div>
     </div>
@@ -390,6 +393,23 @@
 		    </div>
       </div>
 	  </div>
+    <div v-if="submitProses==true" class="main-modal fixed w-full h-100 inset-0 z-50 overflow-y-hidden flex justify-center items-center animated fadeIn faster"
+		  style="background: rgba(0,0,0,.7);">
+      <div class="row w-full">
+        <div class="modal-container w-11/12 md:max-w-md mx-auto rounded-lg z-50 overflow-y-hidden">
+			    <div class="row items-center justify-center w-full h-full">
+            <div class="flex justify-center items-center space-x-1 text-sm">
+              <svg class="w-6 h-6 text-white animate-spin" viewBox="0 0 32 32" xmlns='http://www.w3.org/2000/svg'><path clip-rule='evenodd' d='M15.165 8.53a.5.5 0 01-.404.58A7 7 0 1023 16a.5.5 0 011 0 8 8 0 11-9.416-7.874.5.5 0 01.58.404z' fill='currentColor' fill-rule='evenodd' /></svg>
+              <div class="text-white">Loading ...</div>
+            </div>
+            <div class="flex justify-center text-center space-x-2 items-center">
+              <svg class="h-5 w-5 text-red-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-7v2h2v-2h-2zm0-8v6h2V7h-2z"/></svg>
+              <div class="text-white">{{submitProsesStatus}}</div>
+            </div>
+          </div>
+		    </div>
+      </div>
+	  </div>
   </div>
 </template>
 
@@ -401,6 +421,7 @@ export default {
     return {
       link                : `${this.$route.params.id}`,
       urlAsset            : process.env.URL_ASSETS,
+      urlLink             : '',
       user                : this.$supabase.auth.user(),
       yourData            : true,
       previewPhoto        : '',
@@ -426,8 +447,10 @@ export default {
         'background_color' : '',
         'background_img'   : '',
       },
-      modalAddLink    : false,
-      modalEditLink   : false,
+      modalAddLink        : false,
+      modalEditLink       : false,
+      submitProses        : false,
+      submitProsesStatus  : '',
       dataButton : {
         'href'            : '',
         'text_btn'        : '',
@@ -576,7 +599,9 @@ export default {
         }
       })
     },
+    //submitBro
     async submitCreateLink(){
+      this.submitProses = true
       await this.$supabase
       .from('link_up')
       .update([
@@ -590,8 +615,17 @@ export default {
         }
       ])
       .match({ user_id: this.$supabase.auth.user().id, id: this.idLink}).then((res)=>{
-        console.log(res)
+        if(res.error==null){
+          // console.log(res)
+          // console.log('res')
+          this.submitProses = false
+        }
+        this.submitProsesStatus = 'Proses Error';
       })
+    },
+    openLink(param){
+      // let hostname = window.location.hostname
+      window.location.replace(process.env.URL_LINK+param);
     },
     async setTextColor(color){
       this.colorText = color

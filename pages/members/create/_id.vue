@@ -1,5 +1,5 @@
 <template>
-<div class="max-w-md mx-auto font-ubuntu">
+<div class="max-w-md mx-auto font-poppins">
   <div class="row items-center h-screen bg-white">
     <div class="h-full">
       <div class="flex py-auto px-4 items-center bg-white h-16 justify-between">
