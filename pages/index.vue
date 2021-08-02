@@ -59,7 +59,7 @@
   <div class="flex py-4 items-center">
     <h2 class="mx-auto text-lg">It’s free, and takes less than a minute</h2>
   </div>
-  <div class="flex h-20 w-10/12 mx-auto mt-28 items-center">
+  <div class="hidden lg:block flex h-20 w-10/12 mx-auto mt-28 items-center">
     <div class="flex w-3/12 h-full items-center">
       <div class="justify-center flex items-center mx-auto space-x-2">
         <svg class="h-5 w-5 text-red-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0H24V24H0z"/><path d="M20.243 4.757c2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236C5.515 3 8.093 2.56 10.261 3.44L6.343 7.358l1.414 1.415L12 4.53l-.013-.014.014.013c2.349-2.109 5.979-2.039 8.242.228z"/></svg>
@@ -82,6 +82,36 @@
       <div class="justify-center flex items-center mx-auto space-x-2">
         <svg class="h-5 w-5 text-yellow-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M6.382 5.968A8.962 8.962 0 0 1 12 4c2.125 0 4.078.736 5.618 1.968l1.453-1.453 1.414 1.414-1.453 1.453a9 9 0 1 1-14.064 0L3.515 5.93l1.414-1.414 1.453 1.453zM13 12V7.495L8 14h3v4.5l5-6.5h-3zM8 1h8v2H8V1z"/></svg>
         <span class="mx-auto text-xl">Lightning fast (200ms)</span>
+      </div>
+    </div>
+  </div>
+  <div class="lg:hidden flex h-20 w-10/12 mx-auto mt-8 items-center">
+    <div class="row w-6/12 items-center justify-center">
+      <div class="flex w-full h-full items-center">
+        <div class="justify-center flex items-center mx-auto space-x-2">
+          <svg class="h-5 w-5 text-red-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0H24V24H0z"/><path d="M20.243 4.757c2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236C5.515 3 8.093 2.56 10.261 3.44L6.343 7.358l1.414 1.415L12 4.53l-.013-.014.014.013c2.349-2.109 5.979-2.039 8.242.228z"/></svg>
+          <span class="mx-auto">Free Forever</span>
+        </div>
+      </div>
+      <div class="flex w-full h-full items-center">
+        <div class="justify-center flex items-center mx-auto space-x-2">
+          <svg class="h-5 w-5 text-green-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0H24V24H0z"/><path d="M5 3v16h16v2H3V3h2zm14.94 2.94l2.12 2.12L16 14.122l-3-3-3.94 3.94-2.12-2.122L13 6.88l3 3 3.94-3.94z"/></svg>
+          <span class="mx-auto">Analytics</span>
+        </div>
+      </div>
+    </div>
+    <div class="row w-6/12">
+      <div class="flex w-full h-full items-center">
+        <div class="justify-center flex items-center mx-auto space-x-2">
+          <svg class="h-5 w-5 text-blue-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M7 4v16h10V4H7zM6 2h12a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm6 15a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
+          <span class="mx-auto">iOS & Android</span>
+        </div>
+      </div>
+      <div class="flex w-full h-full items-center">
+        <div class="justify-center flex items-center mx-auto space-x-2">
+          <svg class="h-5 w-5 text-yellow-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M6.382 5.968A8.962 8.962 0 0 1 12 4c2.125 0 4.078.736 5.618 1.968l1.453-1.453 1.414 1.414-1.453 1.453a9 9 0 1 1-14.064 0L3.515 5.93l1.414-1.414 1.453 1.453zM13 12V7.495L8 14h3v4.5l5-6.5h-3zM8 1h8v2H8V1z"/></svg>
+          <span class="mx-auto">Lightning fast (200ms)</span>
+        </div>
       </div>
     </div>
   </div>
