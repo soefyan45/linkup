@@ -86,38 +86,40 @@
     </div>
   </div>
   <div class="block lg:hidden flex h-20 w-11/12 mx-auto mt-8 items-center">
-    <div class="row w-6/12 items-center justify-start">
-      <div class="flex w-full h-full items-center">
-        <div class="justify-start flex items-center space-x-2">
-          <svg class="h-5 w-5 text-red-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0H24V24H0z"/><path d="M20.243 4.757c2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236C5.515 3 8.093 2.56 10.261 3.44L6.343 7.358l1.414 1.415L12 4.53l-.013-.014.014.013c2.349-2.109 5.979-2.039 8.242.228z"/></svg>
+    <div class="row w-6/12 items-center justify-end">
+      <div class="flex w-full h-full items-center justify-end">
+        <div class="justify-end flex items-center space-x-2">
           <span class="mx-auto">Free Forever</span>
+          <svg class="h-5 w-5 text-red-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0H24V24H0z"/><path d="M20.243 4.757c2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236C5.515 3 8.093 2.56 10.261 3.44L6.343 7.358l1.414 1.415L12 4.53l-.013-.014.014.013c2.349-2.109 5.979-2.039 8.242.228z"/></svg>
+
         </div>
       </div>
-      <div class="flex w-full h-full items-center">
-        <div class="justify-start flex items-center space-x-2">
-          <svg class="h-5 w-5 text-green-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0H24V24H0z"/><path d="M5 3v16h16v2H3V3h2zm14.94 2.94l2.12 2.12L16 14.122l-3-3-3.94 3.94-2.12-2.122L13 6.88l3 3 3.94-3.94z"/></svg>
+      <div class="flex w-full h-full items-center justify-end">
+        <div class="justify-end flex items-center space-x-2">
           <span class="mx-auto">Analytics</span>
+          <svg class="h-5 w-5 text-green-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0H24V24H0z"/><path d="M5 3v16h16v2H3V3h2zm14.94 2.94l2.12 2.12L16 14.122l-3-3-3.94 3.94-2.12-2.122L13 6.88l3 3 3.94-3.94z"/></svg>
+
         </div>
       </div>
     </div>
-    <div class="row w-6/12 justify-start">
+    <div class="row w-6/12 justify-end">
       <div class="flex w-full h-full items-center">
-        <div class="justify-start flex items-center space-x-2">
+        <div class="justify-end flex items-center space-x-2">
           <svg class="h-5 w-5 text-blue-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M7 4v16h10V4H7zM6 2h12a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm6 15a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
           <span class="mx-auto">iOS & Android</span>
         </div>
       </div>
       <div class="flex w-full h-full items-center">
-        <div class="justify-start flex items-center space-x-2">
+        <div class="justify-end flex items-center space-x-2">
           <svg class="h-5 w-5 text-yellow-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M6.382 5.968A8.962 8.962 0 0 1 12 4c2.125 0 4.078.736 5.618 1.968l1.453-1.453 1.414 1.414-1.453 1.453a9 9 0 1 1-14.064 0L3.515 5.93l1.414-1.414 1.453 1.453zM13 12V7.495L8 14h3v4.5l5-6.5h-3zM8 1h8v2H8V1z"/></svg>
-          <span class="mx-auto">Lightning fast (200ms)</span>
+          <span class="mx-auto">Lightning fast</span>
         </div>
       </div>
     </div>
   </div>
   <div :class="{'w-screen animate-fadeIn': !view.atTopOfPage }" class="w-10/12 mx-auto h-screen rounded mt-8 bg-gradient-to-t from-blue-400 via-blue-500 to-indigo-500">
     <div class="mx-auto items-center pt-14">
-      <h1 class="mx-auto text-center text-5xl font-semibold text-gray-200">HOW IT WORKS</h1>
+      <h1 class="mx-auto text-center text-2xl lg:text-5xl font-semibold text-gray-200">HOW IT WORKS</h1>
     </div>
     <div class="mx-auto pt-8">
       <div class="mx-4 flex space-x-2">
