@@ -46,7 +46,7 @@ export default {
     '~/assets/fonts/Merienda.css',
     '~/assets/fonts/Nova_Slim.css',
     '~/assets/fonts/Sans_pro.css',
-    '~/assets/fonts/Poppins.css',
+    '~/assets/fonts/poppins.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
