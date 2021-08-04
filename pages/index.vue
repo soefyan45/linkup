@@ -3,10 +3,11 @@
   <div :class="{ 'fixed': !view.atTopOfPage }"  class="h-20 row w-full items-center py-2">
     <div class="h-20 lg:h-20 w-11/12 lg:w-10/12 flex rounded-full shadow-xl bg-white mx-auto justify-between py-2 px-8 items-center">
       <div class="w-6/12 flex h-full justify-star items-center">
-        <div class="w-3/12 h-full items-center flex">
-          <h1 class="text-xl lg:text-2xl font-bold text-blue-600 my-auto mx-2">LinkUp</h1>
+        <div class="w-6/12 lg:w-3/12 h-full items-center flex">
+          <!-- <h1 class="text-xl lg:text-2xl font-bold text-blue-600 my-auto mx-2">LinkUp</h1> -->
+          <img src="https://gbckelxngttdredvrsfh.supabase.in/storage/v1/object/public/assets/design/logo-LU.png" class="w-56 h-22 lg:w-40 lg:h-22 object-cover my-auto">
         </div>
-        <div class="w-9/12 hidden lg:block h-full space-x-4 px-2 items-center">
+        <div class="w-6/12 lg:w-9/12 hidden lg:block h-full space-x-4 px-2 items-center">
           <div class="flex h-full items-center space-x-2 ml-4">
             <span class="text-xl text-gray-800">FAQ</span>
             <span class="text-xl text-gray-800">Help</span>
@@ -15,15 +16,18 @@
       </div>
       <div class="w-6/12 h-full hidden lg:block space-x-4 px-2">
         <div class="flex h-full items-center space-x-2 ml-4 justify-end">
-          <span class="text-xl text-gray-800 my-auto ">Login</span>
-          <span class="text-xl text-white  py-2 px-4 rounded-full text-center my-auto bg-black">Singup</span>
+          <nuxt-link to="/auth/login" class="text-xl text-gray-800 my-auto ">Login</nuxt-link>
+          <nuxt-link to="/auth/singup" class="text-xl text-white  py-2 px-4 rounded-full text-center my-auto bg-black">Singup</nuxt-link>
         </div>
       </div>
       <div class="w-8/12 h-full lg:hidden space-x-4 px-2">
         <div class="flex h-full items-center space-x-2 ml-4 justify-end">
-          <span class="text-2xl text-gray-800 my-auto font-semibold">
+          <!-- <span class="text-2xl text-gray-800 my-auto font-semibold">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 18H3V16H21V18ZM21 13H3V11H21V13ZM21 8H3V6H21V8Z" fill="#2E3A59"></path></svg>
-          </span>
+          </span> -->
+          <span class="text-lg text-gray-800">FAQ</span>
+          <span class="text-lg text-gray-800">Help</span>
+          <nuxt-link to="/auth/login" class="text-xl text-white  py-2 px-4 rounded-full text-center my-auto bg-black">Login</nuxt-link>
         </div>
       </div>
     </div>
@@ -119,25 +123,25 @@
   </div>
   <div :class="{'min-h-screen flex flex-col w-full  animate-fadeIn': !view.atTopOfPage }" class="h-full w-10/12 mx-auto c-border mt-8 bg-gradient-to-t from-blue-400 via-blue-500 to-indigo-500">
     <div class="mx-auto items-center pt-14">
-      <h1 class="mx-auto text-center text-2xl lg:text-5xl font-semibold text-gray-200">HOW IT WORKS</h1>
+      <h1 class="mx-auto text-center text-2xl lg:text-5xl font-semibold text-white">HOW IT WORKS</h1>
     </div>
     <div class="mx-auto pt-8 pb-20 h-full">
-      <div class="mx-4 flex space-x-2">
-        <div class="w-4/12  items-center">
+      <div class="mx-4 row items-center lg:flex lg:space-x-2">
+        <div class="mx-auto pt-4 w-5/12 lg:w-4/12 items-center">
           <div class="row w-full">
             <img class="mx-auto object-cover" src="https://gbckelxngttdredvrsfh.supabase.in/storage/v1/object/public/assets/design/launch_link.png">
             <div class="mx-auto text-center pt-4 font-bold text-2xl">Launch your page in seconds</div>
             <div class="mx-auto text-center pt-4 font-bold text-md flex justify-between">Choose your username, pick a theme (or design your own), and add as many links and socials as you like.</div>
           </div>
         </div>
-        <div class="w-4/12  items-center">
+        <div class="mx-auto pt-4 w-5/12 lg:w-4/12  items-center">
           <div class="row w-full">
             <img class="mx-auto object-cover" src="https://gbckelxngttdredvrsfh.supabase.in/storage/v1/object/public/assets/design/email_list.png">
             <div class="mx-auto text-center pt-4 font-bold text-2xl">Launch your page in seconds</div>
             <div class="mx-auto text-center pt-4 font-bold text-md flex justify-between">Choose your username, pick a theme (or design your own), and add as many links and socials as you like.</div>
           </div>
         </div>
-        <div class="w-4/12  items-center">
+        <div class="mx-auto pt-4 w-5/12 lg:w-4/12  items-center">
           <div class="row w-full">
             <img class="mx-auto object-fit" src="https://gbckelxngttdredvrsfh.supabase.in/storage/v1/object/public/assets/design/launch_link.png">
             <div class="mx-auto text-center pt-4 font-bold text-2xl">Launch your page in seconds</div>
@@ -153,115 +157,65 @@
       <h1 class="mx-auto text-center text-2xl lg:text-5xl font-semibold ">Frequently Asked Questions</h1>
     </div>
     <div class="flex mx-auto pt-8 pb-20 h-full">
-      <div class="w-4/12 h-20 bg-red-300 flex flex-col">
-        <h2 class="text-4xl text-center pt-4">Have more questions?</h2>
+      <div class="w-4/12 hidden lg:block h-20 bg-gradient-to-t from-blue-400 via-blue-500 to-indigo-500 rounded flex flex-col">
+        <h2 class="text-4xl text-center pt-4 font-semibold">Have more questions?</h2>
         <div class="w-20 h-full">
           <button class="mx-4 py-2 px-4 text-xl text-white font-semibold bg-green-500 rounded">WhatsApp</button>
         </div>
       </div>
-      <div class="w-8/12 bg-yellow-300">
-      <main class="w-full p-8 mx-auto">
-            <section class="shadow row">
-                <div class="tabs">
-                    <div class="border-b tab">
-                        <div class="border-l-2 border-transparent relative">
-                            <input class="w-full absolute z-10 cursor-pointer opacity-0 h-5 top-6" type="checkbox" id="chck1">
-                            <header class="flex justify-between items-center p-5 pl-8 pr-8 cursor-pointer select-none tab-label" for="chck1">
-                                <span class="text-grey-darkest font-thin text-xl">
-                                    Massa vitae tortor condimentum lacinia quis vel eros donec
-                                </span>
-                                <div class="rounded-full border border-grey w-7 h-7 flex items-center justify-center test">
-                                    <!-- icon by feathericons.com -->
-                                    <svg aria-hidden="true" class="" data-reactid="266" fill="none" height="24" stroke="#606F7B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                        <polyline points="6 9 12 15 18 9">
-                                        </polyline>
-                                    </svg>
-                                </div>
-                            </header>
-                            <div class="tab-content">
-                                <div class="pl-8 pr-8 pb-5 text-grey-darkest">
-                                    <ul class="pl-4">
-                                        <li class="pb-2">
-                                            consectetur adipiscing elit
-                                        </li>
-                                        <li class="pb-2">
-                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                                        </li>
-                                        <li class="pb-2">
-                                            Viverra orci sagittis eu volutpat odio facilisis mauris
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border-b tab">
-                        <div class="border-l-2 border-transparent relative">
-                            <input class="w-full absolute z-10 cursor-pointer opacity-0 h-5 top-6" type="checkbox" id="chck2">
-                            <header class="flex justify-between items-center p-5 pl-8 pr-8 cursor-pointer select-none tab-label" for="chck2">
-                                <span class="text-grey-darkest font-thin text-xl">
-                                    Massa vitae tortor condimentum lacinia quis vel eros donec
-                                </span>
-                                <div class="rounded-full border border-grey w-7 h-7 flex items-center justify-center test">
-                                    <!-- icon by feathericons.com -->
-                                    <svg aria-hidden="true" class="" data-reactid="266" fill="none" height="24" stroke="#606F7B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                        <polyline points="6 9 12 15 18 9">
-                                        </polyline>
-                                    </svg>
-                                </div>
-                            </header>
-                            <div class="tab-content">
-                                <div class="pl-8 pr-8 pb-5 text-grey-darkest">
-                                    <ul class="pl-4">
-                                        <li class="pb-2">
-                                            consectetur adipiscing elit
-                                        </li>
-                                        <li class="pb-2">
-                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                                        </li>
-                                        <li class="pb-2">
-                                            Viverra orci sagittis eu volutpat odio facilisis mauris
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border-b tab">
-                        <div class="border-l-2 border-transparent relative">
-                            <input class="w-full absolute z-10 cursor-pointer opacity-0 h-5 top-6" type="checkbox" id="chck3">
-                            <header class="flex justify-between items-center p-5 pl-8 pr-8 cursor-pointer select-none tab-label" for="chck3">
-                                <span class="text-grey-darkest font-thin text-xl">
-                                    Massa vitae tortor condimentum lacinia quis vel eros donec
-                                </span>
-                                <div class="rounded-full border border-grey w-7 h-7 flex items-center justify-center test">
-                                    <!-- icon by feathericons.com -->
-                                    <svg aria-hidden="true" class="" data-reactid="266" fill="none" height="24" stroke="#606F7B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                        <polyline points="6 9 12 15 18 9">
-                                        </polyline>
-                                    </svg>
-                                </div>
-                            </header>
-                            <div class="tab-content">
-                                <div class="pl-8 pr-8 pb-5 text-grey-darkest">
-                                    <ul class="pl-4">
-                                        <li class="pb-2">
-                                            consectetur adipiscing elit
-                                        </li>
-                                        <li class="pb-2">
-                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                                        </li>
-                                        <li class="pb-2">
-                                            Viverra orci sagittis eu volutpat odio facilisis mauris
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
+      <div class="w-full lg:w-8/12">
+        <div class="flex flex-col divide-y sm:px-8 lg:px-12 xl:px-32 divide-blue-500 space-y-4">
+			    <details>
+				    <summary class="py-2 outline-none cursor-pointer text-xl font-semibold focus:underline">Why do I need a link up?</summary>
+				    <div class="px-4 pb-4">
+					    <p>Platforms like Instagram, Twitter, and TikTok only allow for one link in the bio. Using a bio link lets you link to all your pages — websites, shop, blog, social posts, videos, anything — making it easier for your audience to discover all your content.Bio Link is also incredibly fast, stunningly elegant, and optimized for clicks.</p>
+				    </div>
+			    </details>
+          <details>
+				    <summary class="py-2 outline-none cursor-pointer text-xl font-semibold focus:underline">Is it really 100% free?</summary>
+				    <div class="px-4 pb-4">
+					    <p>
+                It is. All the features you enjoy — analytics, themes, embeds — will be free for you, forever.
+                <br>You only pay if you want, you can donate.
+              </p>
+				    </div>
+			    </details>
+          <details>
+				    <summary class="py-2 outline-none cursor-pointer text-xl font-semibold focus:underline">Why choose LinkUp over the alternatives?</summary>
+				    <div class="px-4 pb-4">
+					    <p>
+                Link Up is designed for creators, not businesses. We obsessed over design, speed, and above all, giving complete control over your audience.<br>
+                We also make it easy for you to build your email list. We believe everyone should have a direct relationship with their audience.
+              </p>
+				    </div>
+			    </details>
+          <details>
+				    <summary class="py-2 outline-none cursor-pointer text-xl font-semibold focus:underline">Is my data safe?</summary>
+				    <div class="px-4 pb-4">
+					    <p>
+                Link Up does not track any personal data of your visitors. We take privacy and security seriously. We run on the supabase.io infrastructure. We also force SSL encryption across the platform.
+              </p>
+				    </div>
+			    </details>
+          <details>
+				    <summary class="py-2 outline-none cursor-pointer text-xl font-semibold focus:underline">I Love the product. How can I show my apprecation?</summary>
+				    <div class="px-4 pb-4">
+					    <p>
+                # Tell your friends how much you love your bio link!<br>
+                # Buy us a coffee. 100% of the proceeds will go towards caffeinating the team.
+              </p>
+				    </div>
+			    </details>
+          <details>
+				    <summary class="py-2 outline-none cursor-pointer text-xl font-semibold focus:underline">I have a question. How do I contact you?</summary>
+				    <div class="px-4 pb-4">
+					    <p>
+                Just click this button!<br>
+              </p>
+              <button class="mx-4 py-2 px-4 text-xl text-white font-semibold bg-green-500 rounded">WhatsApp</button>
+				    </div>
+			    </details>
+		    </div>
       </div>
     </div>
   </div>
