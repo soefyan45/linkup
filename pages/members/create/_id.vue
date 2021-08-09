@@ -6,7 +6,8 @@
         <div class="">
           <nuxt-link to="/members" class="">
             <div class="">
-              <h1 class="text-3xl font-bold text-gray-600">LinkUp</h1>
+              <!-- <h1 class="text-3xl font-bold text-gray-600">LinkUp</h1> -->
+              <img src="https://gbckelxngttdredvrsfh.supabase.in/storage/v1/object/public/assets/design/logo-LU.png" class="w-32 h-22 lg:w-40 lg:pt-4 lg:h-22 object-fit my-auto">
             </div>
           </nuxt-link>
         </div>

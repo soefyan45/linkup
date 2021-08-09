@@ -3,11 +3,11 @@
   <div :class="{ 'fixed': !view.atTopOfPage }"  class="h-20 row w-full items-center py-2">
     <div class="h-20 lg:h-20 w-11/12 lg:w-10/12 flex rounded-full shadow-xl bg-white mx-auto justify-between py-2 px-8 items-center">
       <div class="w-6/12 flex h-full justify-star items-center">
-        <div class="w-6/12 lg:w-3/12 h-full items-center flex">
+        <div class="w-full lg:w-3/12 h-full items-center flex">
           <!-- <h1 class="text-xl lg:text-2xl font-bold text-blue-600 my-auto mx-2">LinkUp</h1> -->
-          <img src="https://gbckelxngttdredvrsfh.supabase.in/storage/v1/object/public/assets/design/logo-LU.png" class="w-56 h-22 lg:w-40 lg:h-22 object-cover my-auto">
+          <img src="https://gbckelxngttdredvrsfh.supabase.in/storage/v1/object/public/assets/design/logo-LU.png" class="w-28 h-18 lg:w-20 lg:h-18 object-fit my-auto">
         </div>
-        <div class="w-6/12 lg:w-9/12 hidden lg:block h-full space-x-4 px-2 items-center">
+        <div class="lg:w-9/12 hidden lg:block h-full space-x-4 px-2 items-center">
           <div class="flex h-full items-center space-x-2 ml-4">
             <span class="text-xl text-gray-800">FAQ</span>
             <span class="text-xl text-gray-800">Help</span>
@@ -17,7 +17,7 @@
       <div class="w-6/12 h-full hidden lg:block space-x-4 px-2">
         <div class="flex h-full items-center space-x-2 ml-4 justify-end">
           <nuxt-link to="/auth/login" class="text-xl text-gray-800 my-auto ">Login</nuxt-link>
-          <nuxt-link to="/auth/singup" class="text-xl text-white  py-2 px-4 rounded-full text-center my-auto bg-black">Singup</nuxt-link>
+          <nuxt-link to="/auth/singup" class="text-xl text-white  py-2 px-4 rounded-full text-center my-auto bg-merah">Singup</nuxt-link>
         </div>
       </div>
       <div class="w-8/12 h-full lg:hidden space-x-4 px-2">
@@ -45,7 +45,7 @@
     </div>
   </div>
   <div class="px-4 md:w-7/12 lg:w-4/12 mx-auto items-center pt-8">
-    <div class="h-14 w-full bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-500 rounded-lg mx-auto px-1 flex">
+    <div class="h-14 w-full bg-biru rounded-lg mx-auto px-1 flex">
       <div class="w-full h-12 my-auto flex bg-white rounded-l">
         <div class="h-full rounded-l hidden md:block row items-center py-3">
           <span class="h-full font-bold bg-white text-black py-auto my-auto text-center pl-3 lg:pl-1">linkup.my.id/</span>
@@ -121,7 +121,7 @@
       </div>
     </div>
   </div>
-  <div :class="{'min-h-screen flex flex-col w-full  animate-fadeIn': !view.atTopOfPage }" class="h-full w-10/12 mx-auto c-border mt-8 bg-gradient-to-t from-blue-400 via-blue-500 to-indigo-500">
+  <div :class="{'min-h-screen flex flex-col w-full  animate-fadeIn': !view.fillFull }" class="h-full w-10/12 mx-auto c-border mt-8 bg-biru">
     <div class="mx-auto items-center pt-14">
       <h1 class="mx-auto text-center text-2xl lg:text-5xl font-semibold text-white">HOW IT WORKS</h1>
     </div>
@@ -137,15 +137,15 @@
         <div class="mx-auto pt-4 w-5/12 lg:w-4/12  items-center">
           <div class="row w-full">
             <img class="mx-auto object-cover" src="https://gbckelxngttdredvrsfh.supabase.in/storage/v1/object/public/assets/design/email_list.png">
-            <div class="mx-auto text-center pt-4 font-bold text-2xl">Launch your page in seconds</div>
-            <div class="mx-auto text-center pt-4 font-bold text-md flex justify-between">Choose your username, pick a theme (or design your own), and add as many links and socials as you like.</div>
+            <div class="mx-auto text-center pt-4 font-bold text-2xl">Link from everywhere</div>
+            <div class="mx-auto text-center pt-4 font-bold text-md flex justify-between">Use your bio link on your Twitter bio, Instagram, emails, and wherever your audience is. They’ll love it.</div>
           </div>
         </div>
         <div class="mx-auto pt-4 w-5/12 lg:w-4/12  items-center">
           <div class="row w-full">
             <img class="mx-auto object-fit" src="https://gbckelxngttdredvrsfh.supabase.in/storage/v1/object/public/assets/design/launch_link.png">
-            <div class="mx-auto text-center pt-4 font-bold text-2xl">Launch your page in seconds</div>
-            <div class="mx-auto text-center pt-4 font-bold text-md flex justify-between">Choose your username, pick a theme (or design your own), and add as many links and socials as you like.</div>
+            <div class="mx-auto text-center pt-4 font-bold text-2xl">Build your email list (optional)</div>
+            <div class="mx-auto text-center pt-4 font-bold text-md flex justify-between">We believe everyone should have an email list. Accept 1-click follow and send them emails anytime you like.</div>
           </div>
         </div>
       </div>
@@ -230,7 +230,8 @@ export default {
   data() {
     return {
       view: {
-        atTopOfPage: true
+        fillFull: true,
+        atTopOfPage: true,
       }
     }
   },
@@ -239,22 +240,23 @@ export default {
   },
   methods: {
     handleScroll(){
-      // console.log('run')
-      // when the user scrolls, check the pageYOffset
-      console.log(window.pageYOffset)
-      //700
-      // if(window.pageYOffset<50){
-      //   // user is scrolled
-      //   if(this.view.atTopOfPage) this.view.atTopOfPage = true
-      // }
+      // console.log(window.pageYOffset)
       if(window.pageYOffset>50 && window.pageYOffset<1300){
-        // user is scrolled
         if(this.view.atTopOfPage) this.view.atTopOfPage = false
+        this.view.fillFull = false
       }else{
-        if(!this.view.atTopOfPage) this.view.atTopOfPage = true
+        this.view.fillFull = true
       }
-      // if(window.pageYOffset>700){
-      //   if(this.view.atTopOfPage) this.view.atTopOfPage = true
+      // if(window.pageYOffset>50){
+      //   if(this.view.atTopOfPage) this.view.atTopOfPage = false
+      //   this.view.fillFull = false
+      // }
+      // if(window.pageYOffset<1300){
+      //   if(this.view.atTopOfPage) this.view.atTopOfPage = false
+      //   this.view.fillFull = false
+      // }
+      // if(window.pageYOffset<50 && window.pageYOffset>1300){
+      //   this.view.fillFull = true
       // }
     }
   },

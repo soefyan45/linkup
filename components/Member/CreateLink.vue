@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="font-poppins">
     <div v-if="!yourData" class="mx-4 min-h-screen">
       <!-- <h1 class="font-bold text-gray-600 text-2xl pt-2">Short Url</h1> -->
       <div class="row">
@@ -25,7 +25,7 @@
       </div>
       <input ref="imageHeader" type="file" class="hidden" accept="image/png, image/jpeg, image/jpg, image/gif, image/jpeg" id="imgSource" @change.prevent="ImageHeader($event.target.files)">
       <div class="flex items-center justify-center pt-6 mb-2">
-        <div class="flex relative h-40 w-40 rounded-full bg-white items-center my-auto border-dashed border-4 border-green-400">
+        <div class="flex relative h-40 w-40 rounded-full bg-white items-center my-auto border-dashed border-4 border-biru">
           <div v-if="dataProfile['photo']==''" class="flex mx-auto h-32 w-32 rounded-full bg-blue-300 items-center my-auto">
             <span class="flex mx-auto py-auto text-center text-white icon-name pb-4">
               H
@@ -37,7 +37,7 @@
           <div v-if="uploadPhoto==true" class="flex mx-auto h-32 w-32 rounded-full bg-blue-300 items-center my-auto">
             <img id="headerPhoto" class="h-full w-full object-cover object-top rounded-full" alt="image preview"/>
           </div>
-          <div class="h-8 w-8 flex items-center bg-indigo-500 rounded-full absolute top-0 right-0">
+          <div class="h-8 w-8 flex items-center bg-merah rounded-full absolute top-0 right-0">
             <svg xmlns="http://www.w3.org/2000/svg" @click="photoHeader()" class="h-5 w-5 mx-auto text-white" fill="currentColor" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="camera"><rect width="24" height="24" opacity="0"/><path d="M19 7h-3V5.5A2.5 2.5 0 0 0 13.5 3h-3A2.5 2.5 0 0 0 8 5.5V7H5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-8a3 3 0 0 0-3-3zm-9-1.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V7h-4zM20 18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1z"/><path d="M12 10.5a3.5 3.5 0 1 0 3.5 3.5 3.5 3.5 0 0 0-3.5-3.5zm0 5a1.5 1.5 0 1 1 1.5-1.5 1.5 1.5 0 0 1-1.5 1.5z"/></g></g></svg>
           </div>
         </div>
@@ -116,8 +116,8 @@
             </div>
           </button>
         </div>
-        <div class="w-full h-12 flex bg-green-400 rounded" @click="addLink()">
-          <div class="w-2/12 flex h-full bg-blue-400 rounded items-center">
+        <div class="w-full h-12 flex bg-biru rounded" @click="addLink()">
+          <div class="w-2/12 flex h-full bg-merah rounded items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="text-white font-bold h-6 w-6 mx-auto font-bold" fill="currentColor" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="plus"><rect width="24" height="24" transform="rotate(180 12 12)" opacity="0"/><path d="M19 11h-6V5a1 1 0 0 0-2 0v6H5a1 1 0 0 0 0 2h6v6a1 1 0 0 0 2 0v-6h6a1 1 0 0 0 0-2z"/></g></g></svg>
           </div>
           <div class="w-2/12 flex h-full rounded items-center">
@@ -125,16 +125,16 @@
           </div>
           <div class="w-8/12 flex h-full rounded items-center">
             <div class="row mx-2 -space-y-2">
-              <h2 class="text-md font-semibold -mb-2 text-gray-800">Add Link</h2>
-              <span class="text-xs font-lg text-gray-600">Click for add new link</span>
+              <h2 class="text-md font-semibold -mb-2 text-white">Add Link</h2>
+              <span class="text-xs font-lg text-white">Click for add new link</span>
             </div>
           </div>
         </div>
         <div class="w-full flex justify-end space-x-2">
-          <button @click="openLink(dataLink.link)" class="flex px-6 my-2 rounded bg-green-400 text-lg text-white text-center items-center">
+          <button @click="openLink(dataLink.link)" class="flex px-6 my-2 rounded bg-hijau-100 text-lg text-white text-center items-center">
             Preview &nbsp;<svg class="h-5 w-5 text-white text-center mx-auto my-auto" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M1.181 12C2.121 6.88 6.608 3 12 3c5.392 0 9.878 3.88 10.819 9-.94 5.12-5.427 9-10.819 9-5.392 0-9.878-3.88-10.819-9zM12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0-2a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
           </button>
-          <button @click="submitCreateLink()" class="px-6 my-2 rounded bg-blue-400 text-lg text-white">Submit</button>
+          <button @click="submitCreateLink()" class="px-6 my-2 rounded bg-biru text-lg text-white">Submit</button>
         </div>
       </div>
     </div>

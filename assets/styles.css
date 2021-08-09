@@ -19,4 +19,32 @@
 .heading-web{
   font-size: 215px;
 }
+.text-merah{
+  color: #E5194A;
+}
+.bg-merah{
+  background-color: #E5194A;
+}
+.text-biru{
+  color: #0345B6;
+}
+.bg-biru{
+  background-color: #0345B6;
+}
+.border-biru{
+  border-color: #0345B6;
+}
+/* 008080 */
+.bg-hijau{
+  background-color: #06b34e;
+}
+.bg-hijau-100{
+  background-color: #57e793;
+}
+.bg-kuning{
+  background-color: #dad728;
+}
+.bg-biru-100{
+  background-color: #2a78fd;
+}
 
