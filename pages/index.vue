@@ -1,11 +1,11 @@
 <template>
 <div class="min-h-screen flex flex-col w-full bg-gray-100 items-center font-poppins">
-  <div :class="{ 'fixed': !view.atTopOfPage }"  class="h-20 row w-full items-center py-2">
-    <div class="h-20 lg:h-20 w-11/12 lg:w-10/12 flex rounded-full shadow-xl bg-white mx-auto justify-between py-2 px-8 items-center">
+  <div :class="{ 'fixed': !view.atTopOfPage, 'py-2':!view.navWfull}"  class="h-20 row w-full items-center">
+    <div :class="{ 'w-full lg:w-full': view.navWfull,'rounded-full lg:w-10/12':!view.navWfull }" class="h-20 lg:h-18 w-11/12  flex  shadow-xl bg-white mx-auto justify-between py-2 px-8 items-center">
       <div class="w-6/12 flex h-full justify-star items-center">
         <div class="w-full lg:w-3/12 h-full items-center flex">
           <!-- <h1 class="text-xl lg:text-2xl font-bold text-blue-600 my-auto mx-2">LinkUp</h1> -->
-          <img src="https://gbckelxngttdredvrsfh.supabase.in/storage/v1/object/public/assets/design/logo-LU.png" class="w-28 h-18 lg:w-20 lg:h-18 object-fit my-auto">
+          <img src="https://gbckelxngttdredvrsfh.supabase.in/storage/v1/object/public/assets/design/logo-LU.png" class="w-20 h-18 lg:w-28 lg:h-18 object-fit my-auto">
         </div>
         <div class="lg:w-9/12 hidden lg:block h-full space-x-4 px-2 items-center">
           <div class="flex h-full items-center space-x-2 ml-4">
@@ -25,8 +25,8 @@
           <!-- <span class="text-2xl text-gray-800 my-auto font-semibold">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 18H3V16H21V18ZM21 13H3V11H21V13ZM21 8H3V6H21V8Z" fill="#2E3A59"></path></svg>
           </span> -->
-          <span class="text-lg text-gray-800">FAQ</span>
-          <span class="text-lg text-gray-800">Help</span>
+          <!-- <span class="text-lg text-gray-800">FAQ</span>
+          <span class="text-lg text-gray-800">Help</span> -->
           <nuxt-link to="/auth/login" class="text-xl text-white  py-2 px-4 rounded-full text-center my-auto bg-black">Login</nuxt-link>
         </div>
       </div>
@@ -55,8 +55,8 @@
         </div>
       </div>
       <div class="w-4/12 flex h-full items-center">
-        <button class="hidden lg:block h-12 rounded-r mx-auto my-auto text-white font-semibold">claim my link</button>
-        <button class="lg:hidden h-12 rounded-r mx-auto my-auto text-white font-semibold">claim link</button>
+        <nuxt-link to="/auth" class="hidden lg:block h-12 rounded-r mx-auto my-auto text-white font-semibold mt-4">claim my link</nuxt-link>
+        <nuxt-link to="/auth" class="lg:hidden h-12 rounded-r mx-2 my-auto text-white font-semibold">claim link</nuxt-link>
       </div>
     </div>
   </div>
@@ -127,25 +127,25 @@
     </div>
     <div class="mx-auto pt-8 pb-20 h-full">
       <div class="mx-4 row items-center lg:flex lg:space-x-2">
-        <div class="mx-auto pt-4 w-5/12 lg:w-4/12 items-center">
+        <div class="mx-auto pt-4 w-10/12 lg:w-4/12 items-center">
           <div class="row w-full">
-            <img class="mx-auto object-cover" src="https://gbckelxngttdredvrsfh.supabase.in/storage/v1/object/public/assets/design/launch_link.png">
-            <div class="mx-auto text-center pt-4 font-bold text-2xl">Launch your page in seconds</div>
-            <div class="mx-auto text-center pt-4 font-bold text-md flex justify-between">Choose your username, pick a theme (or design your own), and add as many links and socials as you like.</div>
+            <img class="mx-auto object-cover" src="https://gbckelxngttdredvrsfh.supabase.in/storage/v1/object/public/assets/design/guide1.png">
+            <div class="mx-auto text-center pt-4 font-bold text-2xl">Claim Your Link</div>
+            <!-- <div class="mx-auto text-center pt-4 font-bold text-md flex justify-between">Choose your Link, design your own, and add as many links and socials as you like.</div> -->
           </div>
         </div>
-        <div class="mx-auto pt-4 w-5/12 lg:w-4/12  items-center">
+        <div class="mx-auto pt-4 w-10/12 lg:w-4/12  items-center">
           <div class="row w-full">
-            <img class="mx-auto object-cover" src="https://gbckelxngttdredvrsfh.supabase.in/storage/v1/object/public/assets/design/email_list.png">
-            <div class="mx-auto text-center pt-4 font-bold text-2xl">Link from everywhere</div>
-            <div class="mx-auto text-center pt-4 font-bold text-md flex justify-between">Use your bio link on your Twitter bio, Instagram, emails, and wherever your audience is. They’ll love it.</div>
+            <img class="mx-auto object-cover" src="https://gbckelxngttdredvrsfh.supabase.in/storage/v1/object/public/assets/design/guide3.png">
+            <div class="mx-auto text-center pt-4 font-bold text-2xl">Manage Your Page</div>
+            <!-- <div class="mx-auto text-center pt-4 font-bold text-md flex justify-between">Use your bio link on your Twitter bio, Instagram, emails, and wherever your audience is. They’ll love it.</div> -->
           </div>
         </div>
-        <div class="mx-auto pt-4 w-5/12 lg:w-4/12  items-center">
+        <div class="mx-auto pt-4 w-10/12 lg:w-4/12  items-center">
           <div class="row w-full">
-            <img class="mx-auto object-fit" src="https://gbckelxngttdredvrsfh.supabase.in/storage/v1/object/public/assets/design/launch_link.png">
-            <div class="mx-auto text-center pt-4 font-bold text-2xl">Build your email list (optional)</div>
-            <div class="mx-auto text-center pt-4 font-bold text-md flex justify-between">We believe everyone should have an email list. Accept 1-click follow and send them emails anytime you like.</div>
+            <img class="mx-auto object-fit" src="https://gbckelxngttdredvrsfh.supabase.in/storage/v1/object/public/assets/design/guide2.png">
+            <div class="mx-auto text-center pt-4 font-bold text-2xl">Use In Your Social Media</div>
+            <!-- <div class="mx-auto text-center pt-4 font-bold text-md flex justify-between">We believe everyone should have an email list. Accept 1-click follow and send them emails anytime you like.</div> -->
           </div>
         </div>
       </div>
@@ -232,6 +232,7 @@ export default {
       view: {
         fillFull: true,
         atTopOfPage: true,
+        navWfull : false,
       }
     }
   },
@@ -241,11 +242,18 @@ export default {
   methods: {
     handleScroll(){
       // console.log(window.pageYOffset)
-      if(window.pageYOffset>50 && window.pageYOffset<1300){
+      if(window.pageYOffset>50 ){
         if(this.view.atTopOfPage) this.view.atTopOfPage = false
         this.view.fillFull = false
+        // this.view.navWfull = true
       }else{
         this.view.fillFull = true
+        // this.view.navWfull = false
+      }
+      if(window.pageYOffset>50){
+        this.view.navWfull = true
+      }else{
+        this.view.navWfull = false
       }
       // if(window.pageYOffset>50){
       //   if(this.view.atTopOfPage) this.view.atTopOfPage = false
