@@ -17,7 +17,7 @@
       <div class="w-6/12 h-full hidden lg:block space-x-4 px-2">
         <div class="flex h-full items-center space-x-2 ml-4 justify-end">
           <nuxt-link to="/auth/login" class="text-xl text-gray-800 my-auto ">Login</nuxt-link>
-          <nuxt-link to="/auth/singup" class="text-xl text-white  py-2 px-4 rounded-full text-center my-auto bg-merah">Singup</nuxt-link>
+          <nuxt-link to="/auth/singup" class="text-xl text-white  py-2 px-4 rounded-full text-center my-auto bg-merah">Signup</nuxt-link>
         </div>
       </div>
       <div class="w-8/12 h-full lg:hidden space-x-4 px-2">

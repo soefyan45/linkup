@@ -13,7 +13,7 @@
           </div>
           <div class="mb-4 row space-y-2 mx-auto items-center">
             <nuxt-link to="/auth/login" type="button" class="mx-auto w-full px-3 py-2 text-white bg-blue-800 rounded-md focus:bg-blue-500 focus:outline-none text-center">Login</nuxt-link>
-            <nuxt-link to="/auth/singup" type="button" class="mx-auto w-full px-3 py-2 text-black bg-white rounded-md border-2 border-gray-600 focus:bg-gray-400 focus:outline-none text-center">Sing up</nuxt-link>
+            <nuxt-link to="/auth/singup" type="button" class="mx-auto w-full px-3 py-2 text-black bg-white rounded-md border-2 border-gray-600 focus:bg-gray-400 focus:outline-none text-center">Sign up</nuxt-link>
           </div>
         </div>
       </div>

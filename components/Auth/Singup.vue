@@ -81,7 +81,7 @@
                 <span class="text-xs text-red-500">{{errorRePassword}}</span>
               </div>
               <div class="mb-4 pb-4 row space-y-2">
-                <button @click="singup()" type="button" class="w-full px-3 py-2 text-white bg-blue-800 rounded-md focus:bg-blue-500 focus:outline-none">Sing up</button>
+                <button @click="singup()" type="button" class="w-full px-3 py-2 text-white bg-blue-800 rounded-md focus:bg-blue-500 focus:outline-none">Sign up</button>
                 <div class="flex justify-between">
                   <garis><span>or</span></garis>
                 </div>
